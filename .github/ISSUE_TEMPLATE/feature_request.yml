@@ -1,0 +1,24 @@
+name: Feature request
+description: Something Merchant should do for a pop-up shop or food truck
+labels: [enhancement]
+body:
+  - type: textarea
+    id: job
+    attributes:
+      label: What are you trying to get done at the till?
+      description: Describe the situation, not the solution. Who is at the till, and what is slowing them down?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?
+    validations:
+      required: true
+  - type: checkboxes
+    id: offline
+    attributes:
+      label: Offline
+      options:
+        - label: This would still work with no internet
+          required: true

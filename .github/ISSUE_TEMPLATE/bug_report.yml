@@ -1,0 +1,44 @@
+name: Bug report
+description: Something in Merchant does not work as it should
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what Merchant did instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Sell
+        2. Tap Flat white twice
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: look
+    attributes:
+      label: Look
+      options: [Daylight, Counter, Tape, Not about the interface]
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: System and version
+      placeholder: Windows 11, Merchant 0.1.0
+    validations:
+      required: true
+  - type: checkboxes
+    id: data
+    attributes:
+      label: Was a sale lost or changed?
+      options:
+        - label: Yes, a recorded sale is missing or wrong
+  - type: markdown
+    attributes:
+      value: For a security problem, please use the private report described in SECURITY.md instead of this form.
