@@ -1,0 +1,15 @@
+{
+  "title": "Merchant implementation plan",
+  "acceptance": "every control in `design/SPEC.md` works end to end offline in all three looks (Daylight by default), and each of the 27 screens matches its reference under the SPEC's section 3 limits",
+  "phases": {
+    "0": "Fonts and screen checks",
+    "1": "Facts and printing",
+    "2": "Looks and shell",
+    "3": "Selling",
+    "4": "Back office",
+    "5": "Tills and settings",
+    "6": "Whole-till checks and release",
+    "99": "Manual, operator only"
+  },
+  "phase_list": [0, 1, 2, 3, 4, 5, 6, 99]
+}
