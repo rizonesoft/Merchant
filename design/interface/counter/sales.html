@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Counter: Sales and refunds</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;background:#0B1028;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.rail{width:92px;flex-shrink:0;background:#101635;border-right:1px solid #232C5C;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:6px}
+.nb{width:76px;height:68px;border:0;border-radius:14px;background:transparent;color:#AEB4D6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500}
+.nb.on{background:#1E2757;color:#FFB000}
+.r svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{height:64px;flex-shrink:0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #232C5C}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#141B3F;border:1px solid #232C5C;border-radius:16px}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #2F3A75;background:#1E2757;font-weight:600}
+.btn.d{background:transparent;border-color:#FF8A8A;color:#FF8A8A}
+.dim{color:#AEB4D6}
+.num{font-variant-numeric:tabular-nums}
+.chip{height:44px;padding:0 18px;border-radius:999px;border:1px solid #2F3A75;background:transparent;font-weight:500;color:#C9CDE4}
+.chip.on{background:#F5F6FB;border-color:#F5F6FB;color:#101635}
+.row{display:grid;grid-template-columns:70px 70px minmax(0,1fr) 90px 110px;align-items:center;gap:12px;height:54px;padding:0 18px;border-bottom:1px solid #232C5C}
+.row.sel{background:#1E2757}
+.tag{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;background:#232C5C;color:#C9CDE4;justify-self:start}
+</style>
+</head>
+<body>
+<div class="r">
+<nav class="rail" aria-label="Main">
+<svg width="48" height="48" viewBox="0 0 512 512" role="img" aria-label="Merchant" style="margin-bottom: 10px"><rect width="512" height="512" rx="112" fill="#1E2757"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nb on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<div style="flex-grow: 1"></div>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+</nav>
+<div class="main">
+<header class="top">
+<h1 class="h" style="font-size: 20px">Sales</h1>
+<div style="display: flex; gap: 8px"><button class="chip on">Today</button><button class="chip">Yesterday</button><button class="chip">Pick a day</button><button class="chip">All tills</button></div>
+</header>
+<div style="flex-grow: 1; min-height: 0; display: flex; gap: 20px; padding: 20px 24px">
+<section class="card" style="flex-grow: 1; min-width: 0; overflow: hidden" aria-label="Sales today">
+<div class="row dim" style="height: 44px; font-size: 13px; font-weight: 600"><span>Sale</span><span>Time</span><span>Items</span><span>Paid by</span><span style="text-align: right">Total</span></div>
+<div class="row sel"><b class="num">0042</b><span class="num">12:41</span><span>2 Flat white, Toasted cheese, Brownie</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 155.00</span></div>
+<div class="row"><b class="num">0041</b><span class="num">12:33</span><span>2 Cappuccino</span><span class="tag">Card</span><span class="num" style="text-align: right">R 76.00</span></div>
+<div class="row"><b class="num">0040</b><span class="num">12:20</span><span>Flat white</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 35.00</span></div>
+<div class="row"><b class="num">0039</b><span class="num">12:02</span><span>2 Toasted cheese</span><span class="tag">Card</span><span class="num" style="text-align: right">R 110.00</span></div>
+<div class="row"><b class="num">0038</b><span class="num">11:47</span><span>Iced latte, Still water</span><span class="tag" style="background: transparent; border: 1px solid #FF8A8A; color: #FF8A8A">Refunded</span><span class="num dim" style="text-align: right; text-decoration: line-through">R 63.00</span></div>
+<div class="row"><b class="num">0037</b><span class="num">11:31</span><span>Americano, Croissant</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 62.00</span></div>
+<div class="row"><b class="num">0036</b><span class="num">11:18</span><span>3 Flat white</span><span class="tag">Card</span><span class="num" style="text-align: right">R 105.00</span></div>
+<div class="row"><b class="num">0035</b><span class="num">11:05</span><span>Chai latte, Muffin</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 70.00</span></div>
+<div class="row"><b class="num">0034</b><span class="num">10:52</span><span>Cortado</span><span class="tag">Card</span><span class="num" style="text-align: right">R 34.00</span></div>
+<div class="row"><b class="num">0033</b><span class="num">10:40</span><span>2 Americano, Brownie</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 90.00</span></div>
+<div class="row"><b class="num">0032</b><span class="num">10:27</span><span>Rooibos tea, Muffin</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 53.00</span></div>
+<div class="row" style="border-bottom: 0"><b class="num">0031</b><span class="num">10:14</span><span>Cappuccino, Croissant</span><span class="tag">Card</span><span class="num" style="text-align: right">R 70.00</span></div>
+</section>
+<aside class="card" style="width: 380px; flex-shrink: 0; padding: 22px; display: flex; flex-direction: column; gap: 14px" aria-label="Sale 0042">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 class="h" style="font-size: 18px">Sale 0042</h2><span class="dim" style="font-size: 13px">Today 12:41, Till 1</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between"><span>2 x Flat white</span><span class="num">R 70.00</span></div>
+<div style="display: flex; justify-content: space-between"><span>1 x Toasted cheese</span><span class="num">R 55.00</span></div>
+<div style="display: flex; justify-content: space-between"><span>1 x Brownie</span><span class="num">R 30.00</span></div>
+</div>
+<div style="border-top: 1px solid #232C5C; padding-top: 12px; display: flex; flex-direction: column; gap: 6px">
+<div class="dim" style="display: flex; justify-content: space-between; font-size: 14px"><span>VAT included (15%)</span><span class="num">R 20.22</span></div>
+<div class="h" style="display: flex; justify-content: space-between; font-size: 24px"><span>Total</span><span class="num">R 155.00</span></div>
+<div class="dim" style="display: flex; justify-content: space-between; font-size: 14px"><span>Cash received</span><span class="num">R 200.00</span></div>
+<div class="dim" style="display: flex; justify-content: space-between; font-size: 14px"><span>Change given</span><span class="num">R 45.00</span></div>
+</div>
+<div style="flex-grow: 1"></div>
+<button class="btn">Print receipt again</button>
+<button class="btn d">Refund this sale</button>
+<p class="dim" style="font-size: 13px">A refund is recorded as its own entry. The original sale is never deleted.</p>
+</aside>
+</div>
+</div>
+</div>
+</body>
+</html>

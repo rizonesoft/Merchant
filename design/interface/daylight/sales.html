@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Daylight: Sales and refunds</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;background:#F5F6FB;color:#101635;font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.4}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.bar{height:68px;flex-shrink:0;background:#FFFFFF;border-bottom:1px solid #D6D9E8;padding:0 24px;display:flex;align-items:center;gap:22px}
+.tab{height:68px;padding:0 4px;border:0;border-bottom:4px solid transparent;border-top:4px solid transparent;background:transparent;font-weight:600;color:#4A5072}
+.tab.on{color:#101635;border-bottom-color:#FFB000}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#FFFFFF;border:1px solid #D6D9E8;border-radius:14px}
+.btn{height:52px;padding:0 22px;border-radius:10px;border:2px solid #101635;background:#FFFFFF;font-weight:700}
+.btn.d{border-color:#B3261E;color:#B3261E}
+.dim{color:#4A5072}
+.num{font-variant-numeric:tabular-nums}
+.sync{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#0B6B45}
+.dot{width:10px;height:10px;border-radius:50%;background:#0B8A58}
+.day{height:48px;padding:0 18px;border-radius:10px;border:2px solid #8E94B5;background:#FFFFFF;font-weight:600;color:#3B4166}
+.day.on{background:#101635;border-color:#101635;color:#FFFFFF}
+.s{display:grid;grid-template-columns:72px 72px minmax(0,1fr) 90px 120px;gap:12px;align-items:center;min-height:56px;padding:0 20px;border-top:1px solid #E4E6F0}
+.tag{font-size:13px;font-weight:700;padding:4px 10px;border-radius:6px;background:#E9EBF5;justify-self:start}
+</style>
+</head>
+<body>
+<div class="r">
+<header class="bar">
+<svg width="40" height="40" viewBox="0 0 512 512" role="img" aria-label="Merchant"><rect width="512" height="512" rx="112" fill="#101635"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<nav style="display: flex; gap: 22px" aria-label="Main">
+<button class="tab">Sell</button><button class="tab on" aria-current="page">Sales</button><button class="tab">Products</button><button class="tab">Day end</button><button class="tab">Tills</button><button class="tab">Settings</button>
+</nav>
+<div style="flex-grow: 1"></div>
+<span class="dim" style="font-size: 14px">Dune Coffee Co., Till 1</span>
+<span class="sync"><span class="dot"></span>Synced 12:41</span>
+</header>
+<div style="padding: 20px 24px 0; display: flex; gap: 10px; align-items: center">
+<h1 class="h" style="font-size: 24px; flex-grow: 1">Sales today<span class="dim" style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0">, 42 sales, R 3 864.00</span></h1>
+<button class="day on">Today</button><button class="day">Yesterday</button><button class="day">Pick a day</button><button class="day">This till only</button>
+</div>
+<div style="flex-grow: 1; min-height: 0; padding: 20px 24px">
+<section class="card" style="overflow: hidden" aria-label="Sales">
+<div class="s dim" style="border-top: 0; min-height: 44px; font-size: 14px; font-weight: 700"><span>Sale</span><span>Time</span><span>Items</span><span>Paid by</span><span style="text-align: right">Total</span></div>
+<div class="s" style="background: #FFF3D1; font-weight: 600"><span class="num">0042</span><span class="num">12:41</span><span>2 Flat white, Toasted cheese, Brownie</span><span class="tag" style="background: #FFFFFF">Cash</span><span class="num" style="text-align: right">R 155.00</span></div>
+<div style="background: #FFF3D1; padding: 4px 20px 20px 176px; display: flex; gap: 32px; align-items: flex-end">
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px; font-size: 15px">
+<div style="display: flex; justify-content: space-between"><span>2 x Flat white</span><span class="num">R 70.00</span></div>
+<div style="display: flex; justify-content: space-between"><span>1 x Toasted cheese</span><span class="num">R 55.00</span></div>
+<div style="display: flex; justify-content: space-between"><span>1 x Brownie</span><span class="num">R 30.00</span></div>
+<div style="display: flex; justify-content: space-between; color: #3B4166"><span>VAT included (15%)</span><span class="num">R 20.22</span></div>
+<div style="display: flex; justify-content: space-between; color: #3B4166"><span>Cash R 200.00, change R 45.00, taken on Till 1</span><span></span></div>
+</div>
+<div style="display: flex; gap: 10px"><button class="btn">Print receipt again</button><button class="btn d">Refund this sale</button></div>
+</div>
+<div class="s"><span class="num">0041</span><span class="num">12:33</span><span>2 Cappuccino</span><span class="tag">Card</span><span class="num" style="text-align: right">R 76.00</span></div>
+<div class="s"><span class="num">0040</span><span class="num">12:20</span><span>Flat white</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 35.00</span></div>
+<div class="s"><span class="num">0039</span><span class="num">12:02</span><span>2 Toasted cheese</span><span class="tag">Card</span><span class="num" style="text-align: right">R 110.00</span></div>
+<div class="s"><span class="num">0038</span><span class="num">11:47</span><span>Iced latte, Still water</span><span class="tag" style="background: #FFFFFF; border: 2px solid #B3261E; color: #B3261E">Refunded</span><span class="num dim" style="text-align: right; text-decoration: line-through">R 63.00</span></div>
+<div class="s"><span class="num">0037</span><span class="num">11:31</span><span>Americano, Croissant</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 62.00</span></div>
+<div class="s"><span class="num">0036</span><span class="num">11:18</span><span>3 Flat white</span><span class="tag">Card</span><span class="num" style="text-align: right">R 105.00</span></div>
+<div class="s"><span class="num">0035</span><span class="num">11:05</span><span>Chai latte, Muffin</span><span class="tag">Cash</span><span class="num" style="text-align: right">R 70.00</span></div>
+</section>
+</div>
+</div>
+</body>
+</html>

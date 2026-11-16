@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tape: Tills and sync</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;background:#101635;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.body{flex:1;min-height:0;display:flex}
+.tape{width:380px;flex-shrink:0;background:#F5F6FB;color:#101635;font-family:'JetBrains Mono',monospace;font-weight:500;display:flex;flex-direction:column;gap:8px;padding:22px 26px 18px;font-size:14px;line-height:1.6}
+.rule{border-top:2px dashed #8E94B5;margin:6px 0}
+.work{flex:1;min-width:0;padding:24px;display:flex;flex-direction:column;gap:14px}
+.nav{height:72px;flex-shrink:0;background:#0B1028;border-top:1px solid #232C5C;display:flex;align-items:center;padding:0 14px;gap:6px}
+.nv{height:52px;padding:0 16px;border-radius:12px;border:0;background:transparent;color:#AEB4D6;display:flex;align-items:center;gap:10px;font-weight:600}
+.nv.on{background:#FFB000;color:#101635}
+.r svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #3A478C;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.in{height:48px;border-radius:12px;border:1px solid #3A478C;background:#101635;padding:0 14px;width:100%}
+.lab{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#AEB4D6;flex:1 1 0}
+.dim{color:#AEB4D6}
+.till{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid #232C5C}
+.dot{width:10px;height:10px;border-radius:50%;background:#3DDC97;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="r">
+<div class="body">
+<aside class="tape" aria-label="Pairing slip">
+<div style="text-align: center; font-weight: 700; font-size: 18px">PAIRING SLIP</div>
+<div style="text-align: center; font-size: 13px">Dune Coffee Co.</div>
+<div class="rule"></div>
+<div>To add a till to this shop, choose "Join a shop" on the new till and type:</div>
+<div style="border: 2px solid #101635; border-radius: 8px; padding: 14px; text-align: center; font-weight: 700; font-size: 19px; line-height: 1.7">A1B2-C3D4<br>E5F6-0718<br>293A-4B5C<br>6D7E-8F90</div>
+<div>Keep this private. Anyone with the code can join the shop.</div>
+<div style="flex-grow: 1"></div>
+<button style="height: 52px; border-radius: 10px; border: 2px solid #101635; background: transparent; font-family: Inter, sans-serif; font-weight: 700">Print this slip</button>
+<button style="height: 52px; border-radius: 10px; border: 2px solid #101635; background: transparent; font-family: Inter, sans-serif; font-weight: 700">Copy the code</button>
+<button style="height: 52px; border-radius: 10px; border: 2px solid #101635; background: transparent; font-family: Inter, sans-serif; font-weight: 700">Hide the code</button>
+</aside>
+<main class="work">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 class="h" style="font-size: 24px">Tills in this shop</h1><button class="btn p">Sync now</button></div>
+<section style="background: #0B1028; border-radius: 16px; overflow: hidden" aria-label="Tills">
+<div class="till"><span class="dot"></span><div style="flex-grow: 1"><b>Till 1, counter</b><div class="dim" style="font-size: 13px">This till. 27 sales today, nothing waiting to sync.</div></div><button class="btn" style="height: 44px">Rename</button></div>
+<div class="till"><span class="dot"></span><div style="flex-grow: 1"><b>Till 2, window hatch</b><div class="dim" style="font-size: 13px">In range. Synced at 12:41, 15 sales today.</div></div><span class="dim" style="font-size: 13px">till-61289a90</span></div>
+<div class="till" style="border-bottom: 0"><span class="dot" style="background: transparent; border: 2px solid #AEB4D6"></span><div style="flex-grow: 1"><b>Till 3, market stall</b><div class="dim" style="font-size: 13px">Out of range. Last synced yesterday at 17:05.</div></div><span class="dim" style="font-size: 13px">till-ee90434f</span></div>
+</section>
+<p class="dim" style="font-size: 14px">Tills on the same Wi-Fi swap sales every 15 seconds. No internet is used, and a till that was away catches up by itself.</p>
+<div style="flex-grow: 1"></div>
+<section style="background: #0B1028; border-radius: 16px; padding: 20px; display: flex; gap: 12px; align-items: flex-end" aria-label="Move this till">
+<label class="lab">Move this till to another shop: pairing code from that shop<input class="in" type="text"></label>
+<button class="btn">Join that shop</button>
+</section>
+</main>
+</div>
+<nav class="nav" aria-label="Main">
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nv on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+<div style="flex-grow: 1"></div>
+<span class="dim" style="font-size: 13px; display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DDC97"></span>2 tills in range, synced 12:41</span>
+</nav>
+</div>
+</body>
+</html>

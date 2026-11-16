@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Daylight: Welcome</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;background:#F5F6FB;color:#101635;font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.4}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#FFFFFF;border:1px solid #D6D9E8;border-radius:14px}
+.btn{height:52px;padding:0 22px;border-radius:10px;border:2px solid #101635;background:#FFFFFF;font-weight:700}
+.btn.p{background:#101635;color:#FFFFFF}
+.in{height:52px;border-radius:10px;border:2px solid #8E94B5;background:#FFFFFF;padding:0 14px;width:100%}
+.lab{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:#3B4166}
+.dim{color:#4A5072}
+</style>
+</head>
+<body>
+<div class="r">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px">
+<div style="display: flex; align-items: center; gap: 14px">
+<svg width="60" height="60" viewBox="0 0 512 512" role="img" aria-label="Merchant"><rect width="512" height="512" rx="112" fill="#101635"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<span class="h" style="font-size: 40px; letter-spacing: -0.05em">merchant</span>
+</div>
+<h1 class="h" style="font-size: 30px">How do you want to set up this till?</h1>
+<p class="dim" style="font-size: 17px">No account and no internet needed. Everything stays on this till, encrypted.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; width: 1120px">
+<section class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px; border: 2px solid #101635">
+<h2 class="h" style="font-size: 20px">New shop</h2>
+<p class="dim">This is the first till. Name the shop and start selling.</p>
+<label class="lab">Shop name<input class="in" type="text" value="Dune Coffee Co."></label>
+<div style="flex-grow: 1"></div>
+<button class="btn p">Create shop</button>
+</section>
+<section class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<h2 class="h" style="font-size: 20px">Join a shop</h2>
+<p class="dim">The shop already has a till. Copy the pairing code from its Tills tab.</p>
+<label class="lab">Pairing code<input class="in" type="text" placeholder="A1B2-C3D4-E5F6-..."></label>
+<div style="flex-grow: 1"></div>
+<button class="btn">Join shop</button>
+</section>
+<section class="card" style="padding: 26px; display: flex; flex-direction: column; gap: 14px">
+<h2 class="h" style="font-size: 20px">Restore a backup</h2>
+<p class="dim">Replacing a lost or broken till. Pick the backup file and type its passphrase.</p>
+<label class="lab">Backup passphrase<input class="in" type="password"></label>
+<div style="flex-grow: 1"></div>
+<button class="btn">Choose backup file</button>
+</section>
+</div>
+<p class="dim" style="font-size: 14px">Merchant 0.1.0, open source under AGPL-3.0</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tape: Sell</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;background:#101635;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.body{flex:1;min-height:0;display:flex}
+.tape{width:380px;flex-shrink:0;background:#F5F6FB;color:#101635;font-family:'JetBrains Mono',monospace;font-weight:500;display:flex;flex-direction:column;padding:22px 22px 18px}
+.tl{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 8px;border:0;border-radius:8px;background:transparent;text-align:left;width:100%}
+.tl.sel{background:#FFDB85}
+.rule{border-top:2px dashed #8E94B5;margin:8px 0}
+.work{flex:1;min-width:0;padding:20px;display:flex;flex-direction:column;gap:14px}
+.nav{height:72px;flex-shrink:0;background:#0B1028;border-top:1px solid #232C5C;display:flex;align-items:center;padding:0 14px;gap:6px}
+.nv{height:52px;padding:0 16px;border-radius:12px;border:0;background:transparent;color:#AEB4D6;display:flex;align-items:center;gap:10px;font-weight:600}
+.nv.on{background:#FFB000;color:#101635}
+.r svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #3A478C;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.in{height:48px;border-radius:12px;border:1px solid #3A478C;background:#0B1028;padding:0 14px;width:100%}
+.dim{color:#AEB4D6}
+.k{height:92px;border-radius:14px;border:0;color:#101635;font-weight:700;font-size:16px;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;text-align:left}
+.k span{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px}
+.c1{background:#FFB000}.c2{background:#8FD0FF}.c3{background:#FFA98A}.c4{background:#CDBEFF}
+.m{width:52px;height:48px;border:1px solid #3A478C;background:#1E2757;font-weight:700}
+.m.on{background:#F5F6FB;color:#101635;border-color:#F5F6FB}
+</style>
+</head>
+<body>
+<div class="r">
+<div class="body">
+<aside class="tape" aria-label="This sale">
+<div style="text-align: center; font-weight: 700; font-size: 18px">DUNE COFFEE CO.</div>
+<div style="text-align: center; font-size: 13px">Sale 0042  Till 1  12:41</div>
+<div class="rule"></div>
+<button class="tl"><span>2 x Flat white</span><span>70.00</span></button>
+<button class="tl sel" aria-pressed="true"><span>1 x Toasted cheese</span><span>55.00</span></button>
+<button class="tl"><span>1 x Brownie</span><span>30.00</span></button>
+<div style="flex-grow: 1"></div>
+<div class="rule"></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; padding: 0 8px"><span>VAT incl. 15%</span><span>20.22</span></div>
+<div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 34px; padding: 4px 8px 0"><span>TOTAL</span><span>155.00</span></div>
+</aside>
+<main class="work">
+<div style="display: flex; gap: 12px; align-items: center">
+<input class="in" type="search" aria-label="Search products" placeholder="Search products" style="flex: 1 1 0">
+<span class="dim" style="font-weight: 600">Next key adds</span>
+<div style="display: flex" role="group" aria-label="Quantity for the next key"><button class="m on" style="border-radius: 12px 0 0 12px" aria-pressed="true">x1</button><button class="m" style="border-left: 0">x2</button><button class="m" style="border-left: 0">x3</button><button class="m" style="border-left: 0">x4</button><button class="m" style="border-left: 0; border-radius: 0 12px 12px 0">x5</button></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+<button class="k c1">Flat white<span>35.00</span></button><button class="k c1">Cappuccino<span>38.00</span></button><button class="k c1">Americano<span>30.00</span></button><button class="k c1">Cortado<span>34.00</span></button>
+<button class="k c1">Chai latte<span>42.00</span></button><button class="k c1">Rooibos tea<span>25.00</span></button><button class="k c2">Iced latte<span>45.00</span></button><button class="k c2">Still water<span>18.00</span></button>
+<button class="k c3">Toasted cheese<span>55.00</span></button><button class="k c4">Croissant<span>32.00</span></button><button class="k c4">Brownie<span>30.00</span></button><button class="k c4">Muffin<span>28.00</span></button>
+</div>
+<div style="display: flex; gap: 16px; font-size: 13px" class="dim"><span><b style="color: #FFB000">Amber</b> Coffee</span><span><b style="color: #8FD0FF">Blue</b> Cold drinks</span><span><b style="color: #FFA98A">Coral</b> Food</span><span><b style="color: #CDBEFF">Lilac</b> Bakes</span></div>
+<div style="flex-grow: 1"></div>
+<div style="display: flex; align-items: center; gap: 10px; background: #0B1028; border-radius: 14px; padding: 10px 14px">
+<span style="flex-grow: 1"><span class="dim" style="font-size: 13px">Selected line</span><br><b>Toasted cheese</b></span>
+<button class="btn" style="width: 52px; padding: 0; font-size: 20px" aria-label="One less Toasted cheese">-</button><b style="width: 28px; text-align: center; font-size: 18px">1</b><button class="btn" style="width: 52px; padding: 0; font-size: 20px" aria-label="One more Toasted cheese">+</button>
+<button class="btn">Remove line</button><button class="btn">Clear sale</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<button class="btn p" style="height: 76px; font-size: 22px">Cash</button>
+<button class="btn" style="height: 76px; font-size: 22px">Card</button>
+</div>
+</main>
+</div>
+<nav class="nav" aria-label="Main">
+<button class="nv on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+<div style="flex-grow: 1"></div>
+<span class="dim" style="font-size: 13px; display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DDC97"></span>2 tills in range, synced 12:41</span>
+</nav>
+</div>
+</body>
+</html>

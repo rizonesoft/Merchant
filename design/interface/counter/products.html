@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Counter: Products</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;background:#0B1028;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.rail{width:92px;flex-shrink:0;background:#101635;border-right:1px solid #232C5C;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:6px}
+.nb{width:76px;height:68px;border:0;border-radius:14px;background:transparent;color:#AEB4D6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500}
+.nb.on{background:#1E2757;color:#FFB000}
+.r svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{height:64px;flex-shrink:0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #232C5C}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#141B3F;border:1px solid #232C5C;border-radius:16px}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #2F3A75;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.btn.d{background:transparent;border-color:#FF8A8A;color:#FF8A8A}
+.in{height:48px;border-radius:12px;border:1px solid #2F3A75;background:#0B1028;padding:0 14px;width:100%}
+.lab{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#AEB4D6}
+.dim{color:#AEB4D6}
+.num{font-variant-numeric:tabular-nums}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 130px 100px 90px;align-items:center;gap:12px;height:54px;padding:0 18px;border-bottom:1px solid #232C5C}
+.row.sel{background:#1E2757}
+.tag{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;background:#232C5C;color:#C9CDE4;justify-self:start}
+</style>
+</head>
+<body>
+<div class="r">
+<nav class="rail" aria-label="Main">
+<svg width="48" height="48" viewBox="0 0 512 512" role="img" aria-label="Merchant" style="margin-bottom: 10px"><rect width="512" height="512" rx="112" fill="#1E2757"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nb on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<div style="flex-grow: 1"></div>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+</nav>
+<div class="main">
+<header class="top">
+<h1 class="h" style="font-size: 20px">Products</h1>
+<div style="display: flex; gap: 10px; align-items: center"><input class="in" type="search" aria-label="Search products" placeholder="Search products" style="width: 280px; height: 44px"><button class="btn p" style="height: 44px">Add product</button></div>
+</header>
+<div style="flex-grow: 1; min-height: 0; display: flex; gap: 20px; padding: 20px 24px">
+<section class="card" style="flex-grow: 1; min-width: 0; overflow: hidden" aria-label="Product list">
+<div class="row dim" style="height: 44px; font-size: 13px; font-weight: 600"><span>Name</span><span>Category</span><span style="text-align: right">Price</span><span style="text-align: right">In stock</span></div>
+<div class="row"><b>Americano</b><span class="tag">Coffee</span><span class="num" style="text-align: right">R 30.00</span><span class="dim" style="text-align: right">Not tracked</span></div>
+<div class="row"><b>Brownie</b><span class="tag">Bakes</span><span class="num" style="text-align: right">R 30.00</span><span class="num" style="text-align: right">9</span></div>
+<div class="row"><b>Cappuccino</b><span class="tag">Coffee</span><span class="num" style="text-align: right">R 38.00</span><span class="dim" style="text-align: right">Not tracked</span></div>
+<div class="row"><b>Chai latte</b><span class="tag">Coffee</span><span class="num" style="text-align: right">R 42.00</span><span class="dim" style="text-align: right">Not tracked</span></div>
+<div class="row"><b>Cortado</b><span class="tag">Coffee</span><span class="num" style="text-align: right">R 34.00</span><span class="dim" style="text-align: right">Not tracked</span></div>
+<div class="row"><b>Croissant</b><span class="tag">Bakes</span><span class="num" style="text-align: right">R 32.00</span><span class="num" style="text-align: right; color: #FFB000">3 low</span></div>
+<div class="row sel"><b>Flat white</b><span class="tag">Coffee</span><span class="num" style="text-align: right">R 35.00</span><span class="dim" style="text-align: right">Not tracked</span></div>
+<div class="row"><b>Iced latte</b><span class="tag">Cold drinks</span><span class="num" style="text-align: right">R 45.00</span><span class="dim" style="text-align: right">Not tracked</span></div>
+<div class="row"><b>Muffin</b><span class="tag">Bakes</span><span class="num" style="text-align: right">R 28.00</span><span class="num" style="text-align: right">12</span></div>
+<div class="row"><b>Rooibos tea</b><span class="tag">Coffee</span><span class="num" style="text-align: right">R 25.00</span><span class="dim" style="text-align: right">Not tracked</span></div>
+<div class="row"><b>Still water</b><span class="tag">Cold drinks</span><span class="num" style="text-align: right">R 18.00</span><span class="num" style="text-align: right">24</span></div>
+<div class="row" style="border-bottom: 0"><b>Toasted cheese</b><span class="tag">Food</span><span class="num" style="text-align: right">R 55.00</span><span class="num" style="text-align: right">14</span></div>
+</section>
+<form class="card" style="width: 380px; flex-shrink: 0; padding: 22px; display: flex; flex-direction: column; gap: 14px" aria-label="Edit product">
+<h2 class="h" style="font-size: 18px">Edit product</h2>
+<label class="lab">Name<input class="in" type="text" value="Flat white"></label>
+<label class="lab">Category<select class="in"><option>Coffee</option><option>Cold drinks</option><option>Food</option><option>Bakes</option></select></label>
+<label class="lab">Price, VAT included<input class="in num" type="text" inputmode="decimal" value="35.00"></label>
+<label style="display: flex; align-items: center; gap: 12px; min-height: 44px"><input type="checkbox" style="width: 22px; height: 22px; accent-color: #FFB000">Track stock for this product</label>
+<label class="lab">In stock now<input class="in num" type="text" inputmode="numeric" placeholder="Not tracked" disabled></label>
+<div style="flex-grow: 1"></div>
+<div style="display: flex; gap: 10px"><button class="btn p" type="button" style="flex: 1 1 0">Save</button><button class="btn" type="button">Cancel</button></div>
+<button class="btn d" type="button">Remove from the till</button>
+</form>
+</div>
+</div>
+</div>
+</body>
+</html>

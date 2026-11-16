@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Daylight: Sell</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;background:#F5F6FB;color:#101635;font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.4}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.bar{height:68px;flex-shrink:0;background:#FFFFFF;border-bottom:1px solid #D6D9E8;padding:0 24px;display:flex;align-items:center;gap:22px}
+.tab{height:68px;padding:0 4px;border:0;border-bottom:4px solid transparent;border-top:4px solid transparent;background:transparent;font-weight:600;color:#4A5072}
+.tab.on{color:#101635;border-bottom-color:#FFB000}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#FFFFFF;border:1px solid #D6D9E8;border-radius:14px}
+.btn{height:52px;padding:0 22px;border-radius:10px;border:2px solid #101635;background:#FFFFFF;font-weight:700}
+.btn.p{background:#101635;color:#FFFFFF}
+.btn.a{background:#FFB000;border-color:#FFB000}
+.in{height:52px;border-radius:10px;border:2px solid #8E94B5;background:#FFFFFF;padding:0 14px;width:100%}
+.dim{color:#4A5072}
+.num{font-variant-numeric:tabular-nums}
+.sync{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#0B6B45}
+.dot{width:10px;height:10px;border-radius:50%;background:#0B8A58}
+.cat{height:56px;padding:0 16px;border-radius:10px;border:0;background:transparent;font-weight:600;text-align:left;color:#3B4166;display:flex;justify-content:space-between;align-items:center}
+.cat.on{background:#101635;color:#FFFFFF}
+.item{height:72px;padding:0 18px;border-radius:12px;border:1px solid #D6D9E8;background:#FFFFFF;display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:600}
+.step{width:44px;height:44px;border-radius:10px;border:2px solid #101635;background:#FFFFFF;font-size:20px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="r">
+<header class="bar">
+<svg width="40" height="40" viewBox="0 0 512 512" role="img" aria-label="Merchant"><rect width="512" height="512" rx="112" fill="#101635"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<nav style="display: flex; gap: 22px" aria-label="Main">
+<button class="tab on" aria-current="page">Sell</button><button class="tab">Sales</button><button class="tab">Products</button><button class="tab">Day end</button><button class="tab">Tills</button><button class="tab">Settings</button>
+</nav>
+<div style="flex-grow: 1"></div>
+<span class="dim" style="font-size: 14px">Dune Coffee Co., Till 1</span>
+<span class="sync"><span class="dot"></span>Synced 12:41</span>
+</header>
+<div style="flex-grow: 1; min-height: 0; display: flex">
+<nav style="width: 200px; flex-shrink: 0; padding: 20px 12px 20px 20px; display: flex; flex-direction: column; gap: 6px" aria-label="Categories">
+<button class="cat on">All<span class="num">12</span></button>
+<button class="cat">Coffee<span class="num">6</span></button>
+<button class="cat">Cold drinks<span class="num">2</span></button>
+<button class="cat">Food<span class="num">1</span></button>
+<button class="cat">Bakes<span class="num">3</span></button>
+</nav>
+<section style="flex-grow: 1; min-width: 0; padding: 20px 12px; display: flex; flex-direction: column; gap: 14px" aria-label="Products">
+<input class="in" type="search" aria-label="Search products" placeholder="Search products">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<button class="item"><span>Flat white</span><span class="num">R 35.00</span></button>
+<button class="item"><span>Cappuccino</span><span class="num">R 38.00</span></button>
+<button class="item"><span>Americano</span><span class="num">R 30.00</span></button>
+<button class="item"><span>Cortado</span><span class="num">R 34.00</span></button>
+<button class="item"><span>Chai latte</span><span class="num">R 42.00</span></button>
+<button class="item"><span>Rooibos tea</span><span class="num">R 25.00</span></button>
+<button class="item"><span>Iced latte</span><span class="num">R 45.00</span></button>
+<button class="item"><span>Still water</span><span class="num">R 18.00</span></button>
+<button class="item"><span>Toasted cheese</span><span class="num">R 55.00</span></button>
+<button class="item"><span>Croissant</span><span class="num">R 32.00</span></button>
+<button class="item"><span>Brownie</span><span class="num">R 30.00</span></button>
+<button class="item"><span>Muffin</span><span class="num">R 28.00</span></button>
+</div>
+</section>
+<aside class="card" style="width: 400px; flex-shrink: 0; margin: 20px 20px 20px 8px; display: flex; flex-direction: column; overflow: hidden" aria-label="Cart">
+<div style="padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #D6D9E8"><h2 class="h" style="font-size: 20px">This sale</h2><button class="btn" style="height: 44px; padding: 0 14px; border-width: 1px; font-weight: 600">Clear</button></div>
+<div style="flex-grow: 1; padding: 16px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 10px"><button class="step" aria-label="One less Flat white">-</button><b class="num" style="width: 22px; text-align: center">2</b><button class="step" aria-label="One more Flat white">+</button><span style="flex-grow: 1; font-weight: 600">Flat white</span><span class="num">R 70.00</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><button class="step" aria-label="One less Toasted cheese">-</button><b class="num" style="width: 22px; text-align: center">1</b><button class="step" aria-label="One more Toasted cheese">+</button><span style="flex-grow: 1; font-weight: 600">Toasted cheese</span><span class="num">R 55.00</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><button class="step" aria-label="One less Brownie">-</button><b class="num" style="width: 22px; text-align: center">1</b><button class="step" aria-label="One more Brownie">+</button><span style="flex-grow: 1; font-weight: 600">Brownie</span><span class="num">R 30.00</span></div>
+</div>
+<div style="padding: 16px 20px; border-top: 1px solid #D6D9E8; display: flex; flex-direction: column; gap: 4px">
+<div class="dim" style="display: flex; justify-content: space-between; font-size: 14px"><span>4 items, VAT included</span><span class="num">R 20.22</span></div>
+<div class="h" style="display: flex; justify-content: space-between; font-size: 34px"><span>Total</span><span class="num">R 155.00</span></div>
+</div>
+<button class="btn a" style="height: 76px; border-radius: 0; font-size: 22px">Take payment</button>
+</aside>
+</div>
+</div>
+</body>
+</html>

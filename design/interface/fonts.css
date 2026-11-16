@@ -1,0 +1,4 @@
+/* The three typefaces of the interface, loaded from the repository so the pages render offline. */
+@font-face { font-family: "Sora"; src: url("../../assets/fonts/Sora[wght].ttf") format("truetype"); font-weight: 100 800; }
+@font-face { font-family: "Inter"; src: url("../../assets/fonts/Inter[opsz,wght].ttf") format("truetype"); font-weight: 100 900; }
+@font-face { font-family: "JetBrains Mono"; src: url("../../assets/fonts/JetBrainsMono[wght].ttf") format("truetype"); font-weight: 100 800; }

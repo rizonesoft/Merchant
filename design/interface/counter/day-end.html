@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Counter: Day end</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;background:#0B1028;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.rail{width:92px;flex-shrink:0;background:#101635;border-right:1px solid #232C5C;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:6px}
+.nb{width:76px;height:68px;border:0;border-radius:14px;background:transparent;color:#AEB4D6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500}
+.nb.on{background:#1E2757;color:#FFB000}
+.r svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{height:64px;flex-shrink:0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #232C5C}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#141B3F;border:1px solid #232C5C;border-radius:16px}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #2F3A75;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.in{height:48px;border-radius:12px;border:1px solid #2F3A75;background:#0B1028;padding:0 14px;width:100%}
+.lab{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#AEB4D6}
+.dim{color:#AEB4D6}
+.num{font-variant-numeric:tabular-nums}
+.stat{flex:1 1 0;padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.ln{display:flex;justify-content:space-between;min-height:34px;align-items:center}
+</style>
+</head>
+<body>
+<div class="r">
+<nav class="rail" aria-label="Main">
+<svg width="48" height="48" viewBox="0 0 512 512" role="img" aria-label="Merchant" style="margin-bottom: 10px"><rect width="512" height="512" rx="112" fill="#1E2757"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nb on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<div style="flex-grow: 1"></div>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+</nav>
+<div class="main">
+<header class="top">
+<div style="display: flex; align-items: baseline; gap: 12px"><h1 class="h" style="font-size: 20px">Day end</h1><span class="dim" style="font-size: 13px">Tuesday 17 November 2026, all tills</span></div>
+<button class="btn" style="height: 44px">Print day summary</button>
+</header>
+<div style="flex-grow: 1; min-height: 0; padding: 20px 24px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; gap: 16px">
+<div class="card stat"><span class="dim" style="font-size: 13px">Takings</span><span class="h num" style="font-size: 30px">R 3 864.00</span><span class="dim" style="font-size: 13px">42 sales, 1 refund</span></div>
+<div class="card stat"><span class="dim" style="font-size: 13px">Cash</span><span class="h num" style="font-size: 30px">R 2 140.00</span><span class="dim" style="font-size: 13px">24 sales</span></div>
+<div class="card stat"><span class="dim" style="font-size: 13px">Card</span><span class="h num" style="font-size: 30px">R 1 724.00</span><span class="dim" style="font-size: 13px">18 sales</span></div>
+<div class="card stat"><span class="dim" style="font-size: 13px">VAT included</span><span class="h num" style="font-size: 30px">R 504.00</span><span class="dim" style="font-size: 13px">15% of takings</span></div>
+</div>
+<div style="flex-grow: 1; min-height: 0; display: flex; gap: 20px">
+<section class="card" style="flex: 1 1 0; padding: 22px; display: flex; flex-direction: column; gap: 6px" aria-label="Cash count">
+<h2 class="h" style="font-size: 18px; margin-bottom: 8px">Count the cash drawer</h2>
+<div class="ln"><span>Float at the start of the day</span><span class="num">R 500.00</span></div>
+<div class="ln"><span>Cash sales</span><span class="num">R 2 140.00</span></div>
+<div class="ln"><span>Cash refunds</span><span class="num">- R 63.00</span></div>
+<div class="ln" style="border-top: 1px solid #232C5C; font-weight: 600"><span>Should be in the drawer</span><span class="num">R 2 577.00</span></div>
+<label class="lab" style="margin-top: 10px">Cash you counted<input class="in num" type="text" inputmode="decimal" value="2570.00" style="font-size: 20px; height: 56px"></label>
+<div class="ln" style="font-weight: 600; color: #FFB000"><span>Short by</span><span class="num">R 7.00</span></div>
+<div style="flex-grow: 1"></div>
+<button class="btn p" style="height: 60px; font-size: 18px">Close the day</button>
+<p class="dim" style="font-size: 13px">Closing records the count and starts a new day. Sales stay on every till.</p>
+</section>
+<section class="card" style="flex: 1 1 0; padding: 22px; display: flex; flex-direction: column; gap: 6px" aria-label="Best sellers today">
+<h2 class="h" style="font-size: 18px; margin-bottom: 8px">Sold today</h2>
+<div class="ln"><span>Flat white</span><span class="num dim">31 sold</span><span class="num" style="width: 110px; text-align: right">R 1 085.00</span></div>
+<div class="ln"><span>Cappuccino</span><span class="num dim">18 sold</span><span class="num" style="width: 110px; text-align: right">R 684.00</span></div>
+<div class="ln"><span>Toasted cheese</span><span class="num dim">12 sold</span><span class="num" style="width: 110px; text-align: right">R 660.00</span></div>
+<div class="ln"><span>Americano</span><span class="num dim">14 sold</span><span class="num" style="width: 110px; text-align: right">R 420.00</span></div>
+<div class="ln"><span>Iced latte</span><span class="num dim">7 sold</span><span class="num" style="width: 110px; text-align: right">R 315.00</span></div>
+<div class="ln"><span>Brownie</span><span class="num dim">9 sold</span><span class="num" style="width: 110px; text-align: right">R 270.00</span></div>
+<div class="ln"><span>Everything else</span><span class="num dim">16 sold</span><span class="num" style="width: 110px; text-align: right">R 430.00</span></div>
+<div style="flex-grow: 1"></div>
+<div class="ln dim" style="border-top: 1px solid #232C5C; font-size: 13px"><span>Till 1: 27 sales</span><span>Till 2: 15 sales</span><span>Till 3: not synced since yesterday</span></div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

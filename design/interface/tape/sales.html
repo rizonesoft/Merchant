@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tape: Sales and refunds</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;background:#101635;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.body{flex:1;min-height:0;display:flex}
+.tape{width:380px;flex-shrink:0;background:#F5F6FB;color:#101635;font-family:'JetBrains Mono',monospace;font-weight:500;display:flex;flex-direction:column;padding:22px 22px 18px}
+.tl{display:flex;justify-content:space-between;align-items:center;min-height:34px;padding:0 8px}
+.rule{border-top:2px dashed #8E94B5;margin:8px 0}
+.work{flex:1;min-width:0;padding:24px;display:flex;flex-direction:column;gap:14px}
+.nav{height:72px;flex-shrink:0;background:#0B1028;border-top:1px solid #232C5C;display:flex;align-items:center;padding:0 14px;gap:6px}
+.nv{height:52px;padding:0 16px;border-radius:12px;border:0;background:transparent;color:#AEB4D6;display:flex;align-items:center;gap:10px;font-weight:600}
+.nv.on{background:#FFB000;color:#101635}
+.r svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #3A478C;background:#1E2757;font-weight:600}
+.dim{color:#AEB4D6}
+.num{font-family:'JetBrains Mono',monospace;font-weight:500}
+.chip{height:44px;padding:0 16px;border-radius:999px;border:1px solid #3A478C;background:transparent;font-weight:600;color:#C9CDE4}
+.chip.on{background:#F5F6FB;border-color:#F5F6FB;color:#101635}
+.s{display:grid;grid-template-columns:64px 64px minmax(0,1fr) 84px 100px;gap:12px;align-items:center;min-height:50px;padding:0 16px;border:0;border-bottom:1px solid #232C5C;background:transparent;width:100%;text-align:left}
+.s.sel{background:#1E2757}
+</style>
+</head>
+<body>
+<div class="r">
+<div class="body">
+<aside class="tape" aria-label="Receipt for sale 0042">
+<div style="text-align: center; font-weight: 700; font-size: 18px">DUNE COFFEE CO.</div>
+<div style="text-align: center; font-size: 13px">2026-11-17 12:41  Sale 0042  Till 1</div>
+<div class="rule"></div>
+<div class="tl"><span>2 x Flat white</span><span>70.00</span></div>
+<div class="tl"><span>1 x Toasted cheese</span><span>55.00</span></div>
+<div class="tl"><span>1 x Brownie</span><span>30.00</span></div>
+<div class="rule"></div>
+<div class="tl" style="font-weight: 700; font-size: 24px"><span>TOTAL</span><span>155.00</span></div>
+<div class="tl" style="font-size: 14px"><span>VAT incl. 15%</span><span>20.22</span></div>
+<div class="tl"><span>Cash</span><span>200.00</span></div>
+<div class="tl"><span>Change</span><span>45.00</span></div>
+<div style="flex-grow: 1"></div>
+<button style="height: 52px; border-radius: 10px; border: 2px solid #101635; background: transparent; font-family: Inter, sans-serif; font-weight: 700; margin-bottom: 10px">Print this receipt again</button>
+<button style="height: 52px; border-radius: 10px; border: 2px solid #B3261E; color: #B3261E; background: transparent; font-family: Inter, sans-serif; font-weight: 700">Refund this sale</button>
+</aside>
+<main class="work">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 class="h" style="font-size: 24px">Sales today</h1><div style="display: flex; gap: 8px"><button class="chip on">Today</button><button class="chip">Yesterday</button><button class="chip">Pick a day</button><button class="chip">All tills</button></div></div>
+<div style="display: flex; gap: 24px" class="dim"><span><b class="num" style="color: #F5F6FB; font-size: 18px">42</b> sales</span><span><b class="num" style="color: #F5F6FB; font-size: 18px">3 864.00</b> taken</span><span><b class="num" style="color: #F5F6FB; font-size: 18px">1</b> refund</span></div>
+<section style="flex-grow: 1; min-height: 0; background: #0B1028; border-radius: 16px; overflow: hidden" aria-label="Sales">
+<button class="s sel" aria-pressed="true"><b class="num">0042</b><span class="num">12:41</span><span>2 Flat white, Toasted cheese, Brownie</span><span>Cash</span><span class="num" style="text-align: right">155.00</span></button>
+<button class="s"><b class="num">0041</b><span class="num">12:33</span><span>2 Cappuccino</span><span>Card</span><span class="num" style="text-align: right">76.00</span></button>
+<button class="s"><b class="num">0040</b><span class="num">12:20</span><span>Flat white</span><span>Cash</span><span class="num" style="text-align: right">35.00</span></button>
+<button class="s"><b class="num">0039</b><span class="num">12:02</span><span>2 Toasted cheese</span><span>Card</span><span class="num" style="text-align: right">110.00</span></button>
+<button class="s"><b class="num">0038</b><span class="num">11:47</span><span>Iced latte, Still water</span><span style="color: #FF8A8A; font-weight: 700">Refunded</span><span class="num dim" style="text-align: right; text-decoration: line-through">63.00</span></button>
+<button class="s"><b class="num">0037</b><span class="num">11:31</span><span>Americano, Croissant</span><span>Cash</span><span class="num" style="text-align: right">62.00</span></button>
+<button class="s"><b class="num">0036</b><span class="num">11:18</span><span>3 Flat white</span><span>Card</span><span class="num" style="text-align: right">105.00</span></button>
+<button class="s"><b class="num">0035</b><span class="num">11:05</span><span>Chai latte, Muffin</span><span>Cash</span><span class="num" style="text-align: right">70.00</span></button>
+<button class="s"><b class="num">0034</b><span class="num">10:52</span><span>Cortado</span><span>Card</span><span class="num" style="text-align: right">34.00</span></button>
+<button class="s"><b class="num">0033</b><span class="num">10:40</span><span>2 Americano, Brownie</span><span>Cash</span><span class="num" style="text-align: right">90.00</span></button>
+<button class="s"><b class="num">0032</b><span class="num">10:27</span><span>Rooibos tea, Muffin</span><span>Cash</span><span class="num" style="text-align: right">53.00</span></button>
+</section>
+</main>
+</div>
+<nav class="nav" aria-label="Main">
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nv on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+<div style="flex-grow: 1"></div>
+<span class="dim" style="font-size: 13px; display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DDC97"></span>2 tills in range, synced 12:41</span>
+</nav>
+</div>
+</body>
+</html>

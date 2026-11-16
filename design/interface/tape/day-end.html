@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tape: Day end</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;background:#101635;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.body{flex:1;min-height:0;display:flex}
+.tape{width:380px;flex-shrink:0;background:#F5F6FB;color:#101635;font-family:'JetBrains Mono',monospace;font-weight:500;display:flex;flex-direction:column;padding:22px 22px 18px;font-size:14px}
+.tl{display:flex;justify-content:space-between;align-items:center;min-height:28px;padding:0 8px}
+.rule{border-top:2px dashed #8E94B5;margin:6px 0}
+.work{flex:1;min-width:0;padding:24px;display:flex;flex-direction:column;gap:14px}
+.nav{height:72px;flex-shrink:0;background:#0B1028;border-top:1px solid #232C5C;display:flex;align-items:center;padding:0 14px;gap:6px}
+.nv{height:52px;padding:0 16px;border-radius:12px;border:0;background:transparent;color:#AEB4D6;display:flex;align-items:center;gap:10px;font-weight:600}
+.nv.on{background:#FFB000;color:#101635}
+.r svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #3A478C;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.dim{color:#AEB4D6}
+.num{font-family:'JetBrains Mono',monospace;font-weight:500}
+.key{height:60px;border-radius:14px;border:1px solid #3A478C;background:#1E2757;font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700}
+.ln{display:flex;justify-content:space-between;min-height:34px;align-items:center}
+</style>
+</head>
+<body>
+<div class="r">
+<div class="body">
+<aside class="tape" aria-label="Day summary">
+<div style="text-align: center; font-weight: 700; font-size: 18px">DAY SUMMARY</div>
+<div style="text-align: center; font-size: 13px">Dune Coffee Co.  2026-11-17</div>
+<div class="rule"></div>
+<div class="tl"><span>Sales</span><span>42</span></div>
+<div class="tl"><span>Refunds</span><span>1</span></div>
+<div class="tl"><span>Cash</span><span>2 140.00</span></div>
+<div class="tl"><span>Card</span><span>1 724.00</span></div>
+<div class="tl" style="font-weight: 700; font-size: 20px; min-height: 36px"><span>TAKINGS</span><span>3 864.00</span></div>
+<div class="tl"><span>VAT incl. 15%</span><span>504.00</span></div>
+<div class="rule"></div>
+<div class="tl"><span>31 Flat white</span><span>1 085.00</span></div>
+<div class="tl"><span>18 Cappuccino</span><span>684.00</span></div>
+<div class="tl"><span>12 Toasted cheese</span><span>660.00</span></div>
+<div class="tl"><span>14 Americano</span><span>420.00</span></div>
+<div class="tl"><span>7 Iced latte</span><span>315.00</span></div>
+<div class="tl"><span>9 Brownie</span><span>270.00</span></div>
+<div class="tl"><span>16 Other</span><span>430.00</span></div>
+<div class="rule"></div>
+<div class="tl"><span>Till 1</span><span>27 sales</span></div>
+<div class="tl"><span>Till 2</span><span>15 sales</span></div>
+<div class="tl"><span>Till 3</span><span>not synced</span></div>
+</aside>
+<main class="work">
+<div style="display: flex; justify-content: space-between; align-items: center"><h1 class="h" style="font-size: 24px">Close the day</h1><button class="btn">Print the summary</button></div>
+<div style="flex-grow: 1; min-height: 0; display: flex; gap: 16px">
+<section style="flex: 1 1 0; background: #0B1028; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 4px" aria-label="Cash drawer">
+<h2 class="h" style="font-size: 18px; margin-bottom: 8px">Cash drawer</h2>
+<div class="ln"><span>Float this morning</span><span class="num">500.00</span></div>
+<div class="ln"><span>Cash sales</span><span class="num">2 140.00</span></div>
+<div class="ln"><span>Cash refunds</span><span class="num">-63.00</span></div>
+<div class="ln" style="font-weight: 700; border-top: 1px solid #232C5C"><span>Should be in the drawer</span><span class="num" style="font-weight: 700">2 577.00</span></div>
+<div style="background: #1E2757; border-radius: 12px; padding: 12px 16px; margin-top: 10px"><span class="dim" style="font-size: 13px">You counted</span><div class="num" style="font-weight: 700; font-size: 40px">2 570.00</div></div>
+<div class="ln" style="color: #FFB000; font-weight: 700; font-size: 18px; min-height: 48px"><span>Short by</span><span class="num" style="font-weight: 700">7.00</span></div>
+<div style="flex-grow: 1"></div>
+<p class="dim" style="font-size: 13px">Closing records the count and starts a new day. Nothing is deleted.</p>
+</section>
+<section style="width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px" aria-label="Keypad">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<button class="key">7</button><button class="key">8</button><button class="key">9</button>
+<button class="key">4</button><button class="key">5</button><button class="key">6</button>
+<button class="key">1</button><button class="key">2</button><button class="key">3</button>
+<button class="key">0</button><button class="key">.</button><button class="key" aria-label="Delete last digit" style="font-family: Inter, sans-serif; font-size: 16px">Delete</button>
+</div>
+<div style="flex-grow: 1"></div>
+<button class="btn p" style="height: 84px; font-size: 20px">Close the day</button>
+</section>
+</div>
+</main>
+</div>
+<nav class="nav" aria-label="Main">
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nv on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+<div style="flex-grow: 1"></div>
+<span class="dim" style="font-size: 13px; display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DDC97"></span>2 tills in range, synced 12:41</span>
+</nav>
+</div>
+</body>
+</html>

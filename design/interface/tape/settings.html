@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tape: Settings</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;flex-direction:column;background:#101635;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.body{flex:1;min-height:0;display:flex}
+.tape{width:380px;flex-shrink:0;background:#F5F6FB;color:#101635;font-family:'JetBrains Mono',monospace;font-weight:500;display:flex;flex-direction:column;padding:22px 22px 18px;font-size:14px}
+.tl{display:flex;justify-content:space-between;align-items:center;min-height:30px;padding:0 8px}
+.rule{border-top:2px dashed #8E94B5;margin:8px 0}
+.work{flex:1;min-width:0;padding:20px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-content:start}
+.nav{height:72px;flex-shrink:0;background:#0B1028;border-top:1px solid #232C5C;display:flex;align-items:center;padding:0 14px;gap:6px}
+.nv{height:52px;padding:0 16px;border-radius:12px;border:0;background:transparent;color:#AEB4D6;display:flex;align-items:center;gap:10px;font-weight:600}
+.nv.on{background:#FFB000;color:#101635}
+.r svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#0B1028;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.btn{height:48px;padding:0 18px;border-radius:12px;border:1px solid #3A478C;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.in{height:48px;border-radius:12px;border:1px solid #3A478C;background:#101635;padding:0 14px;width:100%}
+.lab{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#AEB4D6;flex:1 1 0}
+.dim{color:#AEB4D6}
+.chk{display:flex;align-items:center;gap:12px;min-height:44px}
+.chk input{width:22px;height:22px;accent-color:#FFB000}
+.kv{display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="r">
+<div class="body">
+<aside class="tape" aria-label="Receipt preview">
+<div style="text-align: center; font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; padding-bottom: 10px">HOW YOUR RECEIPT WILL PRINT</div>
+<div style="text-align: center; font-weight: 700; font-size: 18px">Dune Coffee Co.</div>
+<div style="text-align: center; font-size: 13px">2026-11-17 12:41  Sale 0042</div>
+<div class="rule"></div>
+<div class="tl"><span>2 x Flat white</span><span>70.00</span></div>
+<div class="tl"><span>1 x Toasted cheese</span><span>55.00</span></div>
+<div class="tl"><span>1 x Brownie</span><span>30.00</span></div>
+<div class="rule"></div>
+<div class="tl" style="font-weight: 700; font-size: 22px"><span>TOTAL</span><span>R 155.00</span></div>
+<div class="tl"><span>VAT incl. 15%</span><span>20.22</span></div>
+<div class="tl"><span>Paid by</span><span>cash</span></div>
+<div class="rule"></div>
+<div style="text-align: center">Thank you</div>
+<div style="flex-grow: 1"></div>
+<button style="height: 52px; border-radius: 10px; border: 2px solid #101635; background: transparent; font-family: Inter, sans-serif; font-weight: 700">Print a test receipt</button>
+</aside>
+<main class="work">
+<section class="card" aria-label="Shop">
+<h2 class="h" style="font-size: 17px">Shop, shared with every till</h2>
+<label class="lab">Shop name, printed on receipts<input class="in" type="text" value="Dune Coffee Co."></label>
+<div style="display: flex; gap: 10px"><label class="lab">Currency symbol<input class="in" type="text" value="R"></label><label class="lab">VAT rate, percent<input class="in" type="text" inputmode="decimal" value="15"></label></div>
+<label class="chk"><input type="checkbox" checked>Prices already include VAT</label>
+<label class="lab">Line at the bottom of receipts<input class="in" type="text" value="Thank you"></label>
+<button class="btn p" style="align-self: flex-start">Save shop settings</button>
+</section>
+<section class="card" aria-label="Receipt printer">
+<h2 class="h" style="font-size: 17px">Receipt printer, this till only</h2>
+<label class="lab">Printer address on the network<input class="in" type="text" value="192.168.1.50"></label>
+<label class="lab">Paper width<select class="in"><option>58 mm (32 characters)</option><option>80 mm (48 characters)</option></select></label>
+<label class="chk"><input type="checkbox" checked>Print a receipt after every sale</label>
+<label class="chk"><input type="checkbox" checked>Open the cash drawer on cash sales</label>
+<button class="btn p" style="align-self: flex-start">Save printer</button>
+</section>
+<section class="card" aria-label="Backup">
+<h2 class="h" style="font-size: 17px">Backup</h2>
+<p class="dim" style="font-size: 13px">One file, locked with your passphrase. Last backup yesterday at 17:12.</p>
+<label class="lab">Backup passphrase<input class="in" type="password" value="correct horse"></label>
+<div style="display: flex; gap: 10px"><button class="btn p">Save a backup</button><button class="btn">Restore a backup</button></div>
+</section>
+<section class="card" aria-label="About">
+<h2 class="h" style="font-size: 17px">About</h2>
+<div class="kv"><span class="dim">Version</span><span>Merchant 0.1.0</span></div>
+<div class="kv"><span class="dim">This till</span><span>till-9305388b</span></div>
+<div class="kv"><span class="dim">Licence</span><span>AGPL-3.0, open source</span></div>
+<button class="btn" style="align-self: flex-start">Open the data folder</button>
+</section>
+</main>
+</div>
+<nav class="nav" aria-label="Main">
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nv"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<button class="nv on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+<div style="flex-grow: 1"></div>
+<span class="dim" style="font-size: 13px; display: flex; align-items: center; gap: 8px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #3DDC97"></span>2 tills in range, synced 12:41</span>
+</nav>
+</div>
+</body>
+</html>

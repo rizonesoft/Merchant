@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Counter: Tills and sync</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;background:#0B1028;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.rail{width:92px;flex-shrink:0;background:#101635;border-right:1px solid #232C5C;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:6px}
+.nb{width:76px;height:68px;border:0;border-radius:14px;background:transparent;color:#AEB4D6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500}
+.nb.on{background:#1E2757;color:#FFB000}
+.r svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{height:64px;flex-shrink:0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #232C5C}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.card{background:#141B3F;border:1px solid #232C5C;border-radius:16px}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #2F3A75;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.in{height:48px;border-radius:12px;border:1px solid #2F3A75;background:#0B1028;padding:0 14px;width:100%}
+.lab{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#AEB4D6}
+.dim{color:#AEB4D6}
+.num{font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:#141B3F;font-size:13px;color:#C9CDE4}
+.dot{width:10px;height:10px;border-radius:50%;background:#3DDC97;flex-shrink:0}
+.till{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid #232C5C}
+</style>
+</head>
+<body>
+<div class="r">
+<nav class="rail" aria-label="Main">
+<svg width="48" height="48" viewBox="0 0 512 512" role="img" aria-label="Merchant" style="margin-bottom: 10px"><rect width="512" height="512" rx="112" fill="#1E2757"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nb on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<div style="flex-grow: 1"></div>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+</nav>
+<div class="main">
+<header class="top">
+<h1 class="h" style="font-size: 20px">Tills and sync</h1>
+<div style="display: flex; gap: 10px; align-items: center"><span class="pill"><span class="dot" style="width: 8px; height: 8px"></span>Last sync 12:41, nothing waiting</span><button class="btn p" style="height: 44px">Sync now</button></div>
+</header>
+<div style="flex-grow: 1; min-height: 0; display: flex; gap: 20px; padding: 20px 24px">
+<section class="card" style="flex-grow: 1; min-width: 0; overflow: hidden; display: flex; flex-direction: column" aria-label="Tills in this shop">
+<h2 class="h" style="font-size: 18px; padding: 20px 18px 12px">Tills in Dune Coffee Co.</h2>
+<div class="till"><span class="dot"></span><div style="flex-grow: 1"><b>Till 1, counter</b><div class="dim" style="font-size: 13px">This till. 27 sales today.</div></div><span class="dim" style="font-size: 13px">till-9305388b</span></div>
+<div class="till"><span class="dot"></span><div style="flex-grow: 1"><b>Till 2, window hatch</b><div class="dim" style="font-size: 13px">In range. Synced at 12:41, 15 sales today.</div></div><span class="dim" style="font-size: 13px">till-61289a90</span></div>
+<div class="till"><span class="dot" style="background: transparent; border: 2px solid #AEB4D6"></span><div style="flex-grow: 1"><b>Till 3, market stall</b><div class="dim" style="font-size: 13px">Out of range. Last synced yesterday at 17:05.</div></div><span class="dim" style="font-size: 13px">till-ee90434f</span></div>
+<div style="flex-grow: 1"></div>
+<p class="dim" style="padding: 16px 18px; font-size: 13px; border-top: 1px solid #232C5C">Tills find each other on the same Wi-Fi network and swap sales every 15 seconds. No internet is used. A till that was away catches up by itself when it is back in range.</p>
+</section>
+<div style="width: 420px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px">
+<section class="card" style="padding: 22px; display: flex; flex-direction: column; gap: 14px" aria-label="This till">
+<h2 class="h" style="font-size: 18px">This till</h2>
+<label class="lab">Name shown to other tills<input class="in" type="text" value="Till 1, counter"></label>
+<button class="btn" style="align-self: flex-start">Save name</button>
+</section>
+<section class="card" style="padding: 22px; display: flex; flex-direction: column; gap: 14px" aria-label="Add a till">
+<h2 class="h" style="font-size: 18px">Add another till</h2>
+<p class="dim" style="font-size: 14px">Type this pairing code into the new till. Keep it private: anyone with it can join the shop.</p>
+<div style="background: #0B1028; border: 1px solid #2F3A75; border-radius: 12px; padding: 14px 16px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 17px; line-height: 1.6; letter-spacing: 0.02em">A1B2-C3D4-E5F6-0718<br>293A-4B5C-6D7E-8F90</div>
+<div style="display: flex; gap: 10px"><button class="btn" style="flex: 1 1 0">Copy code</button><button class="btn" style="flex: 1 1 0">Hide code</button></div>
+<label class="lab">Or move this till to another shop<input class="in" type="text" placeholder="Pairing code from the other shop"></label>
+<button class="btn" style="align-self: flex-start">Join that shop</button>
+</section>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

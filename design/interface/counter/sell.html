@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Counter: Sell</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;background:#0B1028;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.rail{width:92px;flex-shrink:0;background:#101635;border-right:1px solid #232C5C;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:6px}
+.nb{width:76px;height:68px;border:0;border-radius:14px;background:transparent;color:#AEB4D6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:500}
+.nb.on{background:#1E2757;color:#FFB000}
+.r svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{height:64px;flex-shrink:0;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #232C5C}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.pill{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:#141B3F;font-size:13px;color:#C9CDE4}
+.dot{width:8px;height:8px;border-radius:50%;background:#3DDC97}
+.card{background:#141B3F;border:1px solid #232C5C;border-radius:16px}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #2F3A75;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.in{height:48px;border-radius:12px;border:1px solid #2F3A75;background:#0B1028;padding:0 14px;width:100%}
+.dim{color:#AEB4D6}
+.num{font-variant-numeric:tabular-nums}
+.chip{height:44px;padding:0 18px;border-radius:999px;border:1px solid #2F3A75;background:transparent;font-weight:500;color:#C9CDE4}
+.chip.on{background:#F5F6FB;border-color:#F5F6FB;color:#101635}
+.tile{height:112px;border-radius:16px;border:1px solid #232C5C;background:#141B3F;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between;text-align:left}
+.tile b{font-size:17px;font-weight:600}
+.step{width:44px;height:44px;border-radius:12px;border:1px solid #2F3A75;background:#1E2757;font-size:20px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="r">
+<nav class="rail" aria-label="Main">
+<svg width="48" height="48" viewBox="0 0 512 512" role="img" aria-label="Merchant" style="margin-bottom: 10px"><rect width="512" height="512" rx="112" fill="#1E2757"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<button class="nb on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>Sell</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"></path></svg>Sales</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8zM7.5 8.5h.01"></path></svg>Products</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Day end</button>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M20 4v5h-5M4 20v-5h5"></path></svg>Tills</button>
+<div style="flex-grow: 1"></div>
+<button class="nb"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"></path><circle cx="16" cy="7" r="2"></circle><circle cx="8" cy="17" r="2"></circle></svg>Settings</button>
+</nav>
+<div class="main">
+<header class="top">
+<div style="display: flex; align-items: baseline; gap: 12px"><h1 class="h" style="font-size: 20px">Dune Coffee Co.</h1><span class="dim" style="font-size: 13px">Till 1</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><span class="pill"><span class="dot"></span>2 tills in range, synced 12:41</span><span class="pill">Today R 3 864.00 in 42 sales</span></div>
+</header>
+<div style="flex-grow: 1; min-height: 0; display: flex">
+<section style="flex-grow: 1; min-width: 0; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px" aria-label="Products">
+<div style="display: flex; gap: 12px">
+<input class="in" type="search" aria-label="Search products" placeholder="Search products" style="flex: 1 1 0">
+</div>
+<div style="display: flex; gap: 8px">
+<button class="chip on">All</button><button class="chip">Coffee</button><button class="chip">Cold drinks</button><button class="chip">Food</button><button class="chip">Bakes</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<button class="tile"><b>Flat white</b><span class="dim num">R 35.00</span></button>
+<button class="tile"><b>Cappuccino</b><span class="dim num">R 38.00</span></button>
+<button class="tile"><b>Americano</b><span class="dim num">R 30.00</span></button>
+<button class="tile"><b>Cortado</b><span class="dim num">R 34.00</span></button>
+<button class="tile"><b>Iced latte</b><span class="dim num">R 45.00</span></button>
+<button class="tile"><b>Chai latte</b><span class="dim num">R 42.00</span></button>
+<button class="tile"><b>Rooibos tea</b><span class="dim num">R 25.00</span></button>
+<button class="tile"><b>Still water</b><span class="dim num">R 18.00</span></button>
+<button class="tile"><b>Toasted cheese</b><span class="dim num">R 55.00</span></button>
+<button class="tile"><b>Croissant</b><span class="dim num">R 32.00</span></button>
+<button class="tile"><b>Brownie</b><span class="dim num">R 30.00</span></button>
+<button class="tile"><b>Muffin</b><span class="dim num">R 28.00</span></button>
+</div>
+</section>
+<aside class="card" style="width: 380px; flex-shrink: 0; margin: 20px 24px 20px 0; padding: 20px; display: flex; flex-direction: column; gap: 16px" aria-label="Cart">
+<div style="display: flex; justify-content: space-between; align-items: center"><h2 class="h" style="font-size: 18px">Cart</h2><button class="btn" style="height: 44px; padding: 0 14px; font-weight: 500">Clear</button></div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 10px"><button class="step" aria-label="One less Flat white">-</button><b class="num" style="width: 22px; text-align: center">2</b><button class="step" aria-label="One more Flat white">+</button><span style="flex-grow: 1; font-weight: 500">Flat white</span><span class="num">R 70.00</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><button class="step" aria-label="One less Toasted cheese">-</button><b class="num" style="width: 22px; text-align: center">1</b><button class="step" aria-label="One more Toasted cheese">+</button><span style="flex-grow: 1; font-weight: 500">Toasted cheese</span><span class="num">R 55.00</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><button class="step" aria-label="One less Brownie">-</button><b class="num" style="width: 22px; text-align: center">1</b><button class="step" aria-label="One more Brownie">+</button><span style="flex-grow: 1; font-weight: 500">Brownie</span><span class="num">R 30.00</span></div>
+</div>
+<div style="border-top: 1px solid #232C5C; padding-top: 14px; display: flex; flex-direction: column; gap: 6px">
+<div class="dim" style="display: flex; justify-content: space-between; font-size: 14px"><span>4 items, VAT included</span><span class="num">R 20.22</span></div>
+<div class="h" style="display: flex; justify-content: space-between; font-size: 30px"><span>Total</span><span class="num">R 155.00</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<button class="btn p" style="height: 64px; font-size: 18px">Cash</button>
+<button class="btn" style="height: 64px; font-size: 18px">Card</button>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</body>
+</html>

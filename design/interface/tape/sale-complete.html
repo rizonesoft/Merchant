@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tape: Sale complete</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;background:#101635;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.tape{width:380px;background:#F5F6FB;color:#101635;font-family:'JetBrains Mono',monospace;font-weight:500;display:flex;flex-direction:column;padding:22px 22px 18px}
+.tl{display:flex;justify-content:space-between;align-items:center;min-height:34px;padding:0 8px}
+.rule{border-top:2px dashed #8E94B5;margin:8px 0}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #3A478C;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.dim{color:#AEB4D6}
+</style>
+</head>
+<body>
+<div class="r">
+<div style="width: 380px; flex-shrink: 0; display: flex; flex-direction: column">
+<aside class="tape" aria-label="Receipt">
+<div style="text-align: center; font-weight: 700; font-size: 18px">DUNE COFFEE CO.</div>
+<div style="text-align: center; font-size: 13px">2026-11-17 12:41  Sale 0042</div>
+<div class="rule"></div>
+<div class="tl"><span>2 x Flat white</span><span>70.00</span></div>
+<div class="tl"><span>1 x Toasted cheese</span><span>55.00</span></div>
+<div class="tl"><span>1 x Brownie</span><span>30.00</span></div>
+<div class="rule"></div>
+<div class="tl" style="font-weight: 700; font-size: 24px"><span>TOTAL</span><span>155.00</span></div>
+<div class="tl" style="font-size: 14px"><span>VAT incl. 15%</span><span>20.22</span></div>
+<div class="tl"><span>Cash</span><span>200.00</span></div>
+<div class="tl"><span>Change</span><span>45.00</span></div>
+<div class="rule"></div>
+<div style="text-align: center; font-weight: 700">SAVED</div>
+<div style="text-align: center; font-size: 13px; padding-bottom: 8px">Thank you</div>
+</aside>
+<svg width="380" height="24" viewBox="0 0 380 24" aria-hidden="true" style="display: block"><path d="M0 0H380l-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22-10 22-10-22Z" fill="#F5F6FB"></path></svg>
+</div>
+<main style="flex-grow: 1; padding: 64px; display: flex; flex-direction: column; justify-content: center; gap: 28px">
+<div style="display: flex; align-items: center; gap: 16px">
+<svg width="56" height="56" viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="36" fill="#3DDC97"></circle><path d="M21 37l10 10 20-22" fill="none" stroke="#101635" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<h1 class="h" style="font-size: 36px">Sale 0042 saved</h1>
+</div>
+<div><div style="font-size: 18px; color: #FFB000; font-weight: 600">Change to give</div><div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 128px; line-height: 1; color: #FFB000">45.00</div></div>
+<p class="dim" style="font-size: 16px; max-width: 620px">The receipt is printing and the drawer is open. This sale is stored on this till and goes to your other tills when they are in range.</p>
+<div style="display: flex; gap: 12px">
+<button class="btn p" style="height: 84px; font-size: 24px; padding: 0 56px">New sale</button>
+<button class="btn" style="height: 84px; font-size: 17px">Print again</button>
+<button class="btn" style="height: 84px; font-size: 17px">Refund this sale</button>
+</div>
+</main>
+</div>
+</body>
+</html>

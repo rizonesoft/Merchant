@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tape: Welcome</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+body{margin:0}
+.r{width:1280px;height:800px;box-sizing:border-box;display:flex;background:#101635;color:#F5F6FB;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.35}
+.r *{box-sizing:border-box}
+.r h1,.r h2,.r h3,.r p{margin:0}
+.r button,.r input,.r select{font:inherit}
+:where(.r button,.r input,.r select){color:inherit}
+.tape{width:380px;flex-shrink:0;background:#F5F6FB;color:#101635;font-family:'JetBrains Mono',monospace;font-weight:500;display:flex;flex-direction:column;gap:10px;padding:40px 30px;margin:0 0 120px 60px;font-size:15px;line-height:1.6}
+.rule{border-top:2px dashed #8E94B5;margin:6px 0}
+.h{font-family:Sora,sans-serif;font-weight:700;letter-spacing:-.02em}
+.btn{height:48px;padding:0 20px;border-radius:12px;border:1px solid #3A478C;background:#1E2757;font-weight:600}
+.btn.p{background:#FFB000;border-color:#FFB000;color:#101635}
+.in{height:48px;border-radius:12px;border:1px solid #3A478C;background:#0B1028;padding:0 14px;width:100%}
+.lab{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#AEB4D6}
+.dim{color:#AEB4D6}
+.opt{background:#0B1028;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
+</style>
+</head>
+<body>
+<div class="r">
+<div style="display: flex; flex-direction: column">
+<aside class="tape" aria-label="Welcome slip">
+<svg width="72" height="72" viewBox="0 0 512 512" role="img" aria-label="Merchant" style="align-self: center"><rect width="512" height="512" rx="112" fill="#101635"></rect><path d="M104 386L175 202L256 328L337 202L408 386" fill="none" stroke="#FFB000" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="256" cy="126" r="31" fill="#F5F6FB"></circle></svg>
+<div style="text-align: center; font-weight: 700; font-size: 22px">MERCHANT</div>
+<div style="text-align: center">The till that packs up with you.</div>
+<div class="rule"></div>
+<div>1 x No internet needed</div>
+<div>1 x No account, no cloud</div>
+<div>1 x Encrypted on this till</div>
+<div>1 x Tills sync over Wi-Fi</div>
+<div class="rule"></div>
+<div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 20px"><span>TOTAL</span><span>0.00</span></div>
+<div style="text-align: center; font-size: 13px; margin-top: 8px">Version 0.1.0  AGPL-3.0</div>
+</aside>
+<svg width="380" height="0" aria-hidden="true"></svg>
+</div>
+<main style="flex-grow: 1; padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+<h1 class="h" style="font-size: 34px">Set up this till</h1>
+<section class="opt"><h2 class="h" style="font-size: 18px">Start a new shop</h2><div style="display: flex; gap: 12px; align-items: flex-end"><label class="lab" style="flex: 1 1 0">Shop name<input class="in" type="text" value="Dune Coffee Co."></label><button class="btn p">Create shop</button></div></section>
+<section class="opt"><h2 class="h" style="font-size: 18px">Join a shop that already has a till</h2><div style="display: flex; gap: 12px; align-items: flex-end"><label class="lab" style="flex: 1 1 0">Pairing code from the other till<input class="in" type="text" placeholder="A1B2-C3D4-E5F6-0718-293A-4B5C-6D7E-8F90"></label><button class="btn">Join shop</button></div></section>
+<section class="opt"><h2 class="h" style="font-size: 18px">Restore a backup</h2><div style="display: flex; gap: 12px; align-items: flex-end"><label class="lab" style="flex: 1 1 0">Backup passphrase<input class="in" type="password"></label><button class="btn">Choose backup file</button></div></section>
+</main>
+</div>
+</body>
+</html>
