@@ -227,7 +227,7 @@ def readme_svg() -> str:
 
 
 def find_browser() -> Path:
-    # Chrome first: Edge's headless mode writes the screenshot but can then fail to exit.
+    # WORKAROUND: Edge's headless mode writes the screenshot but can then fail to exit, so Chrome is tried first.
     candidates = [
         Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe"),
         Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"),
