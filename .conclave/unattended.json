@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "merchant",
+  "agent": "claude",
+  "model": "opus",
+  "effort": "medium",
+  "runners": {
+    "agy": {
+      "model": "gemini-pro-orchestrator",
+      "effort": null
+    }
+  },
+  "prompt_file": "docs/unattended-prompt.md",
+  "branch": "main",
+  "skip_permissions": true,
+  "tools": ["git", "gh", "codex", "python3", "tmux", "dotnet"],
+  "min_disk_gb": 20,
+  "min_ram_gb": 4,
+  "tick_seconds": 300,
+  "idle_minutes": 45,
+  "stall_hours": 6,
+  "preflight": [
+    {
+      "name": "todo-graph",
+      "command": ["python3", "scripts/todo-graph.py", "validate"],
+      "timeout_seconds": 120
+    },
+    {
+      "name": "plan-sync",
+      "command": ["python3", "scripts/todo-graph.py", "plan", "--check"],
+      "timeout_seconds": 120
+    },
+    {
+      "name": "review-pin",
+      "command": ["python3", "scripts/review_pin.py", "--check", "--all"],
+      "timeout_seconds": 60
+    },
+    {
+      "name": "dotnet-build",
+      "command": ["dotnet", "build", "Merchant.slnx", "--nologo", "-v", "q"],
+      "timeout_seconds": 600
+    }
+  ]
+}
