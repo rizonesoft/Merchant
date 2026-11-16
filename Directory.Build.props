@@ -1,0 +1,12 @@
+<Project>
+  <!--
+    This folder is built from Windows and from WSL (where unattended runs execute). Each keeps its
+    own build output, because one system's restore records paths the other cannot read.
+  -->
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <ArtifactsPath>$(MSBuildThisFileDirectory)build\dotnet\windows</ArtifactsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="!$([MSBuild]::IsOSPlatform('Windows'))">
+    <ArtifactsPath>$(MSBuildThisFileDirectory)build/dotnet/unix</ArtifactsPath>
+  </PropertyGroup>
+</Project>

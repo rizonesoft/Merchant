@@ -1,0 +1,127 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Merchant.Till.ViewModels"
+        x:Class="Merchant.Till.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/merchant.ico"
+        Width="1024" Height="680" MinWidth="800" MinHeight="520"
+        Title="{Binding TillName, StringFormat='Merchant ({0})'}">
+
+    <DockPanel>
+        <Border DockPanel.Dock="Bottom" Padding="12,8" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Grid.Column="0" Text="{Binding Status}" TextTrimming="CharacterEllipsis" />
+                <TextBlock Grid.Column="1" Text="{Binding SyncStatus}" Opacity="0.7" Margin="16,0,0,0" />
+            </Grid>
+        </Border>
+
+        <TabControl>
+            <TabItem Header="Till">
+                <Grid ColumnDefinitions="*,340">
+                    <DockPanel Grid.Column="0" Margin="0,0,12,0">
+                        <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*,120,Auto" Margin="0,12,0,0">
+                            <TextBox Grid.Column="0" Text="{Binding NewProductName}" PlaceholderText="New product name" />
+                            <TextBox Grid.Column="1" Text="{Binding NewProductPrice}" PlaceholderText="Price" Margin="8,0" />
+                            <Button Grid.Column="2" Content="Add product" Command="{Binding AddProductCommand}" />
+                        </Grid>
+                        <ScrollViewer>
+                            <ItemsControl ItemsSource="{Binding Products}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:ProductButton">
+                                        <Button Command="{Binding TapCommand}" Width="150" Height="96" Margin="0,0,8,8"
+                                                HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                            <StackPanel Spacing="4">
+                                                <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="SemiBold"
+                                                           TextWrapping="Wrap" TextAlignment="Center" />
+                                                <TextBlock Text="{Binding Price}" TextAlignment="Center" Opacity="0.75" />
+                                            </StackPanel>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </DockPanel>
+
+                    <Border Grid.Column="1" Padding="12" CornerRadius="8"
+                            Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Top" Text="Cart" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,8" />
+                            <StackPanel DockPanel.Dock="Bottom" Spacing="8">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" Text="Total" FontSize="22" FontWeight="Bold" />
+                                    <TextBlock Grid.Column="1" Text="{Binding CartTotal}" FontSize="22" FontWeight="Bold" />
+                                </Grid>
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                                    <Button Grid.Column="0" Content="Cash" Command="{Binding PayCashCommand}" Classes="accent"
+                                            Height="56" FontSize="18" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+                                    <Button Grid.Column="1" Content="Card" Command="{Binding PayCardCommand}"
+                                            Height="56" FontSize="18" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+                                </Grid>
+                                <Button Content="Clear cart" Command="{Binding ClearCartCommand}"
+                                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+                                <TextBlock Text="{Binding TodaySummary}" Opacity="0.75" />
+                            </StackPanel>
+                            <ScrollViewer>
+                                <ItemsControl ItemsSource="{Binding Cart}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate x:DataType="vm:CartLine">
+                                            <Grid ColumnDefinitions="36,*,Auto" Margin="0,4">
+                                                <TextBlock Grid.Column="0" Text="{Binding Quantity}" FontWeight="SemiBold" />
+                                                <TextBlock Grid.Column="1" Text="{Binding Name}" TextTrimming="CharacterEllipsis" />
+                                                <TextBlock Grid.Column="2" Text="{Binding Total}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Setup">
+                <ScrollViewer>
+                    <StackPanel Spacing="20" MaxWidth="560" HorizontalAlignment="Left">
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Pair another till" FontSize="18" FontWeight="SemiBold" />
+                            <TextBlock TextWrapping="Wrap" Opacity="0.75"
+                                       Text="Tills with the same pairing code sync with each other when they share a Wi-Fi network. Type this code into the other till, or type the other till's code here." />
+                            <SelectableTextBlock Text="{Binding PairingCode}" FontFamily="Consolas,Menlo,monospace" FontSize="16" />
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                <TextBox Grid.Column="0" Text="{Binding JoinCode}" PlaceholderText="Pairing code from the other till" />
+                                <Button Grid.Column="1" Content="Join shop" Command="{Binding JoinShopCommand}" />
+                            </Grid>
+                            <Button Content="Sync now" Command="{Binding SyncNowCommand}" />
+                        </StackPanel>
+
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Receipt printer" FontSize="18" FontWeight="SemiBold" />
+                            <TextBlock TextWrapping="Wrap" Opacity="0.75"
+                                       Text="Network address of an ESC/POS receipt printer, for example 192.168.1.50. Leave empty to turn printing off." />
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                <TextBox Grid.Column="0" Text="{Binding PrinterHost}" PlaceholderText="Printer address" />
+                                <Button Grid.Column="1" Content="Save" Command="{Binding SavePrinterCommand}" />
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Backup" FontSize="18" FontWeight="SemiBold" />
+                            <TextBlock TextWrapping="Wrap" Opacity="0.75"
+                                       Text="A backup is one file, locked with the passphrase you choose here. Save it to a USB stick or SD card. Restoring adds the backup's sales to this till." />
+                            <TextBox Text="{Binding BackupPassphrase}" PasswordChar="*" PlaceholderText="Backup passphrase" />
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Button Content="Save backup..." Command="{Binding ExportBackupCommand}" />
+                                <Button Content="Restore backup..." Command="{Binding RestoreBackupCommand}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

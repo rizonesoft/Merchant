@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Merchant.Core/Merchant.Core.csproj" />
+    <Project Path="src/Merchant.SyncHost/Merchant.SyncHost.csproj" />
+    <Project Path="src/Merchant.Till/Merchant.Till.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Merchant.Tests/Merchant.Tests.csproj" />
+  </Folder>
+</Solution>
