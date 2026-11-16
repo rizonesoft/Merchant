@@ -182,8 +182,8 @@ The existing `sale.completed` carries lines, total and tender. Receipts, the sal
 
 - [ ] Add optional `int? Number`, `string? TillName`, `long? VatCents`, `long? CashReceivedCents` and `long? ChangeCents` to `SaleCompleted` in `src/Merchant.Core/Domain/ShopEvents.cs`. Done when: a sale written by the previous build still deserialises with those fields empty.
 - [ ] Add `SqliteEventStore.NextSaleNumber()` in `src/Merchant.Core/Storage/SqliteEventStore.cs`: read, increment and store the `sale_number` setting in one transaction. Done when: three calls return 1, 2, 3 and a reopened store returns 4. Cheaper substitute: counting existing sale events must fail review: a restored till would reuse numbers.
-- [ ] Add `src/Merchant.Core/Domain/SaleBuilder.cs` with `Build(lines, settings, tender, cashReceived, number, tillName)` computing total and VAT through `Vat` for both `PricesIncludeVat` modes, and change through subtraction. Done when: the fixture cart gives total 15500, VAT 2022 and change 4500 for 20000 received; with VAT added on top the total is 17825. Cheaper substitute: computing VAT in a view model must fail review.
-- [ ] Refuse in `SaleBuilder`: an empty cart, a cash amount below the total, and a card sale carrying cash fields. Done when: each returns a refusal and builds nothing.
+- [ ] Add `src/Merchant.Core/Domain/SaleBuilder.cs` with `Totals(lines, settings)` (item count, total and VAT through `Vat` for both `PricesIncludeVat` modes, valid for any cart including an empty one) and `Build(lines, settings, tender, cashReceived, number, tillName)`, which uses `Totals` and computes change through subtraction. Done when: the fixture cart gives total 15500, VAT 2022 and change 4500 for 20000 received; with VAT added on top the total is 17825. Cheaper substitute: computing VAT in a view model must fail review.
+- [ ] Refuse in `SaleBuilder.Build` only: an empty cart, a cash amount below the total, and a card sale carrying cash fields. Done when: each returns a refusal and builds nothing, while `Totals` of an empty cart is zero.
 - [ ] Add `tests/Merchant.Tests/SaleBuilderTests.cs`. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~SaleBuilderTests"` passes.
 - [ ] Commit: `core: sale number, VAT and payment detail`
 
@@ -262,14 +262,14 @@ The Sales and Day end screens read the log through queries, so no screen folds e
 1. Add the queries to `src/Merchant.Core/Domain/ShopState.cs`. Done when: the fixture's day reproduces the figures in `design/SPEC.md` section 9.
 
 - [ ] Add `ShopState.SalesOn(DateOnly day, Guid? onlyDevice)` returning sales newest first with number, time, till, lines, total, tender, cash fields and refund state. Done when: the fixture returns 42 sales for the day and 27 for Till 1.
-- [ ] Add `ShopState.DaySummary(DateOnly day)`: sales count, refund count, takings, cash takings and count, card takings and count, VAT, where a refunded sale is left out of takings. Done when: the fixture gives 42, 1, 386400, 214000 in 24, 172400 in 18 and 50400. Cheaper substitute: counting refunded sales in takings must fail the fixture figures.
+- [ ] Add `ShopState.DaySummary(DateOnly day)`: sales count, refund count and refund total, takings, cash takings and count, card takings and count, VAT, where takings count every completed sale including one refunded later (the refund is reported beside them and leaves the drawer through `DrawerSummary`). Done when: the fixture gives 42, 1 refund of 6300, 386400, 214000 in 24, 172400 in 18 and 50400. Cheaper substitute: dropping a refunded sale from takings must fail the fixture figures: the drawer sum subtracts it once already.
 - [ ] Add `ShopState.DrawerSummary(DateOnly day, Guid deviceId, long floatCents)`: float, this till's cash sales, this till's cash refunds, expected cash. Done when: the fixture gives 50000, 214000, 6300 and 257700 for Till 1.
 - [ ] Add `ShopState.SoldOn(DateOnly day)`: products by takings, the first six by amount and one `rest` entry with the summed quantity and amount. Done when: the fixture's seven lines sum to 386400 and start with Flat white 31 for 108500.
 - [ ] Add `ShopState.SalesPerTill(DateOnly day)` with each till's count. Done when: the fixture gives 27 and 15.
 - [ ] Add `tests/Merchant.Tests/DayQueryTests.cs` over a small hand-built log (the full fixture arrives in D02 T01 §12). Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~DayQueryTests"` passes.
 - [ ] Commit: `core: sales and day queries`
 
-**Test checkpoint:** `dotnet test Merchant.slnx --filter "FullyQualifiedName~DayQueryTests"` passes; including refunded sales in takings makes `Refunded_sale_leaves_takings` fail.
+**Test checkpoint:** `dotnet test Merchant.slnx --filter "FullyQualifiedName~DayQueryTests"` passes; dropping a refunded sale from takings makes `Refunded_sale_stays_in_takings_and_counts_as_a_refund` fail.
 
 ## Verification
 

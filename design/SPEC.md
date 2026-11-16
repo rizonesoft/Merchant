@@ -96,7 +96,7 @@ Each control has an ID. TODO sections and tests cite these IDs.
 - `PAY-01` `Back to cart` (Daylight and Tape: `Back to the sale`). Returns to Sell with the cart unchanged.
 - `PAY-02` The order: lines, VAT included, amount due. Counter: an Order card. Daylight: the amount in the header band. Tape: the paper, which also gains the Cash and CHANGE lines as cash is entered, and reads `Not saved yet` at the foot.
 - `PAY-03` Method: `Cash` or `Card on the reader`. Counter and Daylight: a two-part switch. Tape: the screen is the cash screen with `Pay by card instead`.
-- `PAY-04` Cash entry. Counter and Tape: a keypad (digits, decimal point, delete) and four quick amounts: the exact amount, the next multiple of 10, the next multiple of 100 and the one after (for 155.00: 155, 160, 200, 300; duplicates are dropped). Daylight: note and coin buttons `R 200` to `R 1` that add to the amount received, `Exact amount`, `Type an amount` (opens `X-03`) and `Start again` (back to zero).
+- `PAY-04` Cash entry. Counter and Tape: a keypad (digits, decimal point, delete) and four quick amounts: the exact amount, the next multiple of 10 above it, the next multiple of 100 above it and the one after (for 155.00: 155, 160, 200, 300; for 200.00: 200, 210, 300, 400; duplicates are dropped). Daylight: note and coin buttons `R 200` to `R 1` that add to the amount received, `Exact amount`, `Type an amount` (opens `X-03`) and `Start again` (back to zero).
 - `PAY-05` Received and change. While received is less than due the change box reads `Still to pay` with the shortfall, and `PAY-06` is disabled. Daylight also lists what was tapped (`1 x R 200`).
 - `PAY-06` Complete (Counter `Complete sale`, Daylight `Finish sale`, Tape `Save sale, give R 45.00 change`). Records the sale, lowers counted stock, prints the receipt and opens the drawer as settings say, and opens Sale complete. The sale is on disk before anything is printed.
 - `PAY-07` Card. Choosing card replaces the cash entry with `Take R 155.00 on your card reader, then confirm.`, a primary button `Card payment approved` and `Back to cash`. Approving records the sale as paid by card. Merchant does not talk to the reader.
@@ -107,7 +107,7 @@ Each control has an ID. TODO sections and tests cite these IDs.
 - `DONE-01` Confirmation with the sale number, method and time, and the sentence that it is stored on this till and shared with other tills when they are in range.
 - `DONE-02` Change to give, cash sales only. A card sale shows `Paid by card` with the amount in its place.
 - `DONE-03` `New sale` (Daylight: `Next customer`). Opens Sell with an empty cart. It has keyboard focus, so Enter starts the next sale.
-- `DONE-04` `Print receipt again` (Tape: `Print again`).
+- `DONE-04` `Print receipt again` (Tape: `Print again`). A reprint here or from Sales (`SALES-05`) uses the current shop and paper settings and never opens the cash drawer.
 - `DONE-05` `Refund this sale`. Opens `X-02`.
 - `DONE-06` Printer line: `Receipt printed on <printer address>.` with `The cash drawer is open.` on a cash sale; or `The receipt did not print: <reason>.`; or `Receipt printing is off.`
 - `DONE-07` Receipt preview. Counter: a paper receipt on the right. Tape: the paper column, ending in a torn edge. Daylight shows none.
@@ -229,6 +229,7 @@ The till records facts as events (see `README.md`). The interface needs these, e
 Kept on the till only, never synced: the look, the printer settings, the float for today, the last backup time, and the pairing code's shown or hidden state.
 
 - Counted stock for a product is the last `stock.adjusted` count, minus units sold, plus units refunded, since that adjustment.
+- Takings, and the cash and card figures, count every completed sale, including one refunded later. Refunds are reported beside them as a count and an amount, and a cash refund leaves the drawer through the expected cash of `DAY-03`. So the fixture's takings of 3 864.00 include sale 0038, and its drawer holds 500.00 + 2 140.00 - 63.00.
 - Sale numbers count up per till from 0001 and never restart.
 - A day is the till's local calendar day.
 

@@ -38,7 +38,7 @@ depends_on: ["looks-and-shell", "receipts-and-printing"]
 | 5 | §5 | Look chooser | §1 | [ ] |
 | 6 | §6 | Daylight look: Settings screen | §2, §3, §4, §5 | [ ] |
 | 7 | §7 | Counter look: Settings screen | §2, §3, §4, §5 | [ ] |
-| 8 | §8 | Tape look: Settings screen | §2, §3, §4, §5 | [ ] |
+| 8 | §8 | Tape look: Settings screen | §2, §3, §4, §5, §6, §7 | [ ] |
 
 ## 1. Shop settings form
 
@@ -134,7 +134,7 @@ Choosing the look (`SET-19`), the one control the pages do not draw.
 
 - [ ] Add `Looks` (three entries with name and `IsCurrent`) and `ChooseLookCommand` calling `LookManager.Set`. Done when: choosing Tape sets the manager to Tape.
 - [ ] Add `src/Merchant.Till/Looks/LookChooser.axaml`: a card titled `Look` spanning both columns with three 180 x 112 px buttons, each showing a miniature of that look's Sell screen drawn from its tokens (ground, surface block, accent bar) above its name, the current one with the primary border. Done when: the chooser renders in all three looks with the current look marked. Cheaper substitute: a screenshot bitmap as the miniature must fail review: it is drawn from tokens.
-- [ ] Add `tests/Merchant.Tests/Screens/LookChooserTests.cs` choosing each look and rendering Settings after each. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~LookChooserTests"` passes.
+- [ ] Add `tests/Merchant.Tests/Screens/LookChooserTests.cs` rendering the chooser card alone in each look, choosing each entry, and reopening the store to read the choice back. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~LookChooserTests"` passes.
 - [ ] Commit: `settings: look chooser`
 
 **Test checkpoint:** `dotnet test Merchant.slnx --filter "FullyQualifiedName~LookChooserTests"` passes; not persisting the choice makes `Look_survives_a_restart` fail.
@@ -267,6 +267,7 @@ The Tape view of this screen, drawn 1:1 from `design/interface/tape/settings.htm
 - [ ] Build `SET-19` (the look chooser) in `src/Merchant.Till/Looks/Tape/SettingsView.axaml`, bound to the screen's view model (source: `design/SPEC.md` `SET-19`). Done when: in `tests/Merchant.Tests/Screens/TapeSettingsTests.cs`, choosing a look changes the visible screen at once and survives a restart. Cheaper substitute: a control that is drawn but not bound, or bound to look-specific logic, must fail the test.
 - [ ] Build `SET-20` (the live receipt preview) in `src/Merchant.Till/Looks/Tape/SettingsView.axaml`, bound to the screen's view model (source: `design/SPEC.md` `SET-20`). Done when: in `tests/Merchant.Tests/Screens/TapeSettingsTests.cs`, typing a shop name changes the paper preview before saving. Cheaper substitute: a control that is drawn but not bound, or bound to look-specific logic, must fail the test.
 - [ ] Place the look chooser card after About; the reference page was drawn before `SET-19`, so render the comparison with the chooser collapsed by the test hook `SettingsViewModel.ShowLookChooser = false`, and add a second render with it shown saved as `settings-look.png`. Done when: both renders are written and the first matches the reference. Cheaper substitute: hiding the chooser in the shipped screen must fail review.
+- [ ] Add `tests/Merchant.Tests/Screens/SettingsLookSwitchTests.cs`: on the Settings screen choose each look in turn and render Settings after each, now that all three Settings views exist. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~SettingsLookSwitchTests"` passes and each render is in the chosen look. Cheaper substitute: switching the view model without the view changing must fail the render assertion.
 - [ ] Add the render test `TapeSettingsTests.Matches_the_reference` in `tests/Merchant.Tests/Screens/TapeSettingsTests.cs`, rendering the view with `DuneFixture` at 1280 x 800 through `ScreenRenderer` and comparing it with `design/interface/tape/settings.png` through `ScreenComparer`. Done when: the test passes, and fails when a control is moved 20 px. Cheaper substitute: comparing the render with a copy of itself, or raising the comparer's limits, must fail review.
 - [ ] Commit: `tape: settings screen`
 

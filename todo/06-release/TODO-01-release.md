@@ -153,7 +153,7 @@ The last check that all 27 screens match and every control id has an owner and a
 1. Add the coverage test. Done when: it lists no unowned id.
 
 - [ ] Add `tests/Merchant.Tests/ContractCoverageTests.cs`: read every control id (`[A-Z]+-[0-9]+`) from `design/SPEC.md` section 5 and assert each appears in at least one file under `tests/Merchant.Tests`. Done when: the test passes, and adding an id to the SPEC makes it fail until a test cites it.
-- [ ] Add `tests/Merchant.Tests/Screens/AllScreensTests.cs` asserting a `Matches_the_reference` test exists and passes for each of the 27 look and screen pairs. Done when: 27 cases pass.
+- [ ] Add `tests/Merchant.Tests/Screens/AllScreensTests.cs` asserting a `Matches_the_reference` test exists and passes for each of the 27 look and screen pairs, and that no destination is still registered as `ComingSoonViewModel`. Done when: 27 cases pass and the type `ComingSoonViewModel` is deleted.
 - [ ] Fix any drift the sweep finds at its owning view. Done when: both tests pass.
 - [ ] Commit: `release: fidelity sweep and contract coverage`
 
@@ -172,11 +172,12 @@ A merchant needs one folder to copy onto a till.
 1. Add `scripts/publish.py`. Done when: both builds start.
 
 - [ ] Add `scripts/publish.py` running `dotnet publish src/Merchant.Till -c Release -r <rid> --self-contained` for `win-x64` and `linux-x64` into `build/publish/<rid>`, with the version from the newest `v*` tag or `0.1.0`. Done when: both folders hold a `Merchant.Till` executable.
-- [ ] Add a smoke check to the script: start the Linux build with `MERCHANT_DATA_DIR` set to a temporary folder under a 10 second limit using the headless platform flag, and end its whole process group afterwards. Done when: the process starts, writes `till.db` and is gone after the check. Cheaper substitute: leaving the process running must fail review.
+- [ ] Add a `--check` argument to `src/Merchant.Till/Program.cs`: open the store in `MERCHANT_DATA_DIR`, load the embedded fonts and the three looks' dictionaries, print `ok` and exit 0 without creating a window, or print the failure and exit 1. Done when: `Merchant.Till --check` prints `ok` with no display attached. Cheaper substitute: a check that only prints `ok` must fail review: it opens the store and loads the resources.
+- [ ] Run `build/publish/linux-x64/Merchant.Till --check` from the script with `MERCHANT_DATA_DIR` set to a temporary folder under a 30 second limit, ending its whole process group on timeout. Done when: the script fails when the check prints anything but `ok`, and no `Merchant.Till` process remains afterwards. Cheaper substitute: leaving the process running must fail review.
 - [ ] Add `scripts/tests/test_publish.py` for the version rule. Done when: `python3 -m unittest scripts.tests.test_publish` passes.
 - [ ] Commit: `release: publish script`
 
-**Test checkpoint:** `python3 scripts/publish.py` exits 0 and `build/publish/linux-x64/Merchant.Till` exists; `python3 -m unittest scripts.tests.test_publish` passes.
+**Test checkpoint:** `python3 scripts/publish.py` exits 0 and `build/publish/linux-x64/Merchant.Till --check` prints `ok`; `python3 -m unittest scripts.tests.test_publish` passes.
 
 ## 8. README and user guide from the real screens
 

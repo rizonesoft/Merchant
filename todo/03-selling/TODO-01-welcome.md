@@ -49,9 +49,9 @@ The till must know whether it belongs to a shop, and offer the three ways in (`W
 
 1. Stop `TillRuntime` creating a key by itself and add `WelcomeViewModel` to `src/Merchant.Till/ViewModels`. Done when: each path produces a shop and opens Sell.
 
-- [ ] Remove the automatic shop key from the `TillRuntime` constructor and add `HasShop`, `CreateShop(name)` (new key, `shop.settings` event with the name, `till.named` default) and keep `JoinShop(code)`. Done when: a fresh runtime reports no shop and starts no sync host until it has one. Cheaper substitute: a hidden default shop must fail `Fresh_till_starts_on_welcome`.
+- [ ] Remove the automatic shop key from the `TillRuntime` constructor and add `HasShop`, `CreateShop(name)` (new key, `shop.settings` event with the name, `till.named` default) and keep `JoinShop(code)`. Done when: a fresh runtime reports no shop and starts no sync host until it has one. Cheaper substitute: a hidden default shop must fail `Fresh_runtime_has_no_shop`.
 - [ ] Add `src/Merchant.Till/ViewModels/WelcomeViewModel.cs` with `ShopName`, `CreateShopCommand`, `PairingCode`, `JoinShopCommand`, `RestorePassphrase`, `RestoreCommand` (file path from an injected picker) and one refusal text per path with the SPEC wording. Done when: an empty name, a short code and a wrong passphrase each set their own refusal and change nothing.
-- [ ] On success start the network, then call `ShellViewModel.Navigate(Sell)`. Done when: the shell shows Sell and the sync host is listening.
+- [ ] On success start the network, then raise `Completed`, which the shell answers by navigating to Sell (with a test double for Sell until D03 T02 §1 registers it). Done when: the sync host is listening and the shell was asked for Sell once.
 - [ ] Add `tests/Merchant.Tests/WelcomeViewModelTests.cs` covering all three successes and all three refusals, and that a till without the code cannot sync with the new shop. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~WelcomeViewModelTests"` passes.
 - [ ] Commit: `welcome: first run and view model`
 

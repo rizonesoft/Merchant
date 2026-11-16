@@ -95,7 +95,7 @@ Any sale can be printed again (`SALES-05`).
 
 **Build order:**
 
-1. Add `PrintAgainCommand` to `SalesViewModel`. Done when: the bytes equal the original receipt.
+1. Add `PrintAgainCommand` to `SalesViewModel`. Done when: the sale's receipt is sent with no drawer pulse.
 
 - [ ] Add `PrintAgainCommand` building the receipt for the selected sale with the current shop settings and paper width, never opening the drawer, and reporting the outcome in the notice bar. Done when: the recorded bytes hold no drawer pulse. Cheaper substitute: opening the drawer on a reprint must fail the test.
 - [ ] Add the case to `tests/Merchant.Tests/SalesViewModelTests.cs`. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~SalesViewModelTests"` passes.

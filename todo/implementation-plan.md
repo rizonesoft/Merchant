@@ -41,7 +41,7 @@ Sections: 16 | Checklist items: 82
 
 ### Phase 2: Looks and shell
 
-Sections: 13 | Checklist items: 69
+Sections: 13 | Checklist items: 68
 
 | Status | Reference   | Deliverable                          | Needs | Items |
 | ------ | ----------- | ------------------------------------ | ----- | ----- |
@@ -49,7 +49,7 @@ Sections: 13 | Checklist items: 69
 | [ ]    | D02 T01 §2  | Daylight tokens and control styles   | none  | 4     |
 | [ ]    | D02 T01 §3  | Counter tokens and control styles    | none  | 4     |
 | [ ]    | D02 T01 §4  | Tape tokens and control styles       | none  | 5     |
-| [ ]    | D02 T01 §5  | Navigation and screen host           | none  | 5     |
+| [ ]    | D02 T01 §5  | Navigation and screen host           | none  | 4     |
 | [ ]    | D02 T01 §9  | Sync status indicator                | none  | 4     |
 | [ ]    | D02 T01 §10 | Notice bar                           | none  | 4     |
 | [ ]    | D02 T01 §11 | Dialog host                          | none  | 5     |
@@ -61,7 +61,7 @@ Sections: 13 | Checklist items: 69
 
 ### Phase 3: Selling
 
-Sections: 21 | Checklist items: 178
+Sections: 22 | Checklist items: 183
 
 | Status | Reference  | Deliverable                                   | Needs | Items |
 | ------ | ---------- | --------------------------------------------- | ----- | ----- |
@@ -75,6 +75,7 @@ Sections: 21 | Checklist items: 178
 | [ ]    | D03 T02 §3 | Daylight look: Sell screen                    | none  | 14    |
 | [ ]    | D03 T02 §4 | Counter look: Sell screen                     | none  | 15    |
 | [ ]    | D03 T02 §5 | Tape look: Sell screen                        | none  | 15    |
+| [ ]    | D03 T02 §6 | Application startup on the shell              | none  | 5     |
 | [ ]    | D03 T03 §1 | Cash entry: keypad, quick amounts and notes   | none  | 6     |
 | [ ]    | D03 T03 §2 | Completing a sale by cash or card             | none  | 6     |
 | [ ]    | D03 T03 §3 | Type an amount dialog                         | none  | 4     |
@@ -116,7 +117,7 @@ Sections: 20 | Checklist items: 160
 
 ### Phase 5: Tills and settings
 
-Sections: 16 | Checklist items: 142
+Sections: 16 | Checklist items: 143
 
 | Status | Reference  | Deliverable                              | Needs | Items |
 | ------ | ---------- | ---------------------------------------- | ----- | ----- |
@@ -135,11 +136,11 @@ Sections: 16 | Checklist items: 142
 | [ ]    | D05 T02 §5 | Look chooser                             | none  | 4     |
 | [ ]    | D05 T02 §6 | Daylight look: Settings screen           | none  | 23    |
 | [ ]    | D05 T02 §7 | Counter look: Settings screen            | none  | 23    |
-| [ ]    | D05 T02 §8 | Tape look: Settings screen               | none  | 24    |
+| [ ]    | D05 T02 §8 | Tape look: Settings screen               | none  | 25    |
 
 ### Phase 6: Whole-till checks and release
 
-Sections: 8 | Checklist items: 29
+Sections: 8 | Checklist items: 30
 
 | Status | Reference  | Deliverable                                 | Needs | Items |
 | ------ | ---------- | ------------------------------------------- | ----- | ----- |
@@ -149,9 +150,9 @@ Sections: 8 | Checklist items: 29
 | [ ]    | D06 T01 §4 | Two tills through the interface             | none  | 3     |
 | [ ]    | D06 T01 §5 | Removing the old window                     | none  | 3     |
 | [ ]    | D06 T01 §6 | Fidelity sweep and contract coverage        | none  | 4     |
-| [ ]    | D06 T01 §7 | Publishable builds                          | none  | 4     |
+| [ ]    | D06 T01 §7 | Publishable builds                          | none  | 5     |
 | [ ]    | D06 T01 §8 | README and user guide from the real screens | none  | 4     |
 
-Progress: 0/97 verified sections, 3 ready to run now.
+Progress: 0/98 verified sections, 3 ready to run now.
 
-Checklist: 0/676 items completed (includes Commit items).
+Checklist: 0/682 items completed (includes Commit items).
