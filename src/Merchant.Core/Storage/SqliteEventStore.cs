@@ -102,13 +102,17 @@ public sealed class SqliteEventStore : IEventStore, IDisposable
         return record;
     }
 
-    /// <summary>Every event in time order (UUIDv7 ids sort by creation time).</summary>
+    /// <summary>
+    /// Every event in replay order: by time, then device, then that device's own sequence. The
+    /// sequence settles events a till records within one millisecond, whose ids carry the same
+    /// timestamp and would otherwise sort by their random part.
+    /// </summary>
     public List<EventRecord> ReadAll()
     {
         lock (_gate)
         {
             using var cmd = _db.CreateCommand();
-            cmd.CommandText = "SELECT id, device_id, seq, type, payload, occurred_ms FROM events ORDER BY id";
+            cmd.CommandText = "SELECT id, device_id, seq, type, payload, occurred_ms FROM events ORDER BY occurred_ms, device_id, seq";
             return ReadEvents(cmd);
         }
     }

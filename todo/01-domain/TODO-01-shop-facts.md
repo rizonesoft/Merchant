@@ -10,7 +10,7 @@ title: "TODO-01 -- The facts the interface needs"
 
 > **Goal:** The event log records everything the interface shows (`design/SPEC.md` section 8): shop settings, categories, richer products, stock, numbered sales with VAT, refunds, day closes and till names, in an order that a wrong clock cannot scramble.
 
-> **Current state:** Measured 2026-11-17. `src/Merchant.Core/Domain/ShopEvents.cs` defines `product.defined` (id, name, price) and `sale.completed` (id, lines, total, tender). `src/Merchant.Core/Domain/ShopState.cs` derives the product list and per-day totals. `SqliteEventStore.ReadAll` orders by id. There are no settings, categories, stock, refunds, day closes or till names. `MainViewModel.TryParsePrice` and `MainViewModel.Money` hold the money rules.
+> **Current state:** Measured 2026-11-17. `src/Merchant.Core/Domain/ShopEvents.cs` defines `product.defined` (id, name, price) and `sale.completed` (id, lines, total, tender). `src/Merchant.Core/Domain/ShopState.cs` derives the product list and per-day totals. `SqliteEventStore.ReadAll` orders by wall-clock time, then device, then sequence. There are no settings, categories, stock, refunds, day closes or till names. `MainViewModel.TryParsePrice` and `MainViewModel.Money` hold the money rules.
 
 ## Inputs
 
@@ -46,7 +46,7 @@ title: "TODO-01 -- The facts the interface needs"
 
 ## 1. Event order that survives a clock change
 
-Events replay in UUIDv7 order today (`SqliteEventStore.ReadAll`), so a product edit made after the till's clock is set back loses to the older edit. Each event gains a logical clock that only moves forward, and replay follows it.
+Events replay in wall-clock order today (`SqliteEventStore.ReadAll` orders by `occurred_ms`, then device, then sequence), so a product edit made after the till's clock is set back loses to the older edit. Each event gains a logical clock that only moves forward, and replay follows it.
 
 **Phase:** 1
 **Needs:** none
@@ -58,14 +58,14 @@ Events replay in UUIDv7 order today (`SqliteEventStore.ReadAll`), so a product e
 2. Replay in clock order. Done when: the backwards-clock test passes.
 
 - [ ] Add `long Clock` to `EventRecord` in `src/Merchant.Core/Events/EventRecord.cs` and a `clock INTEGER NOT NULL` column to `events` in `src/Merchant.Core/Storage/SqliteEventStore.cs`. Done when: a new store creates the column and `ReadAll` returns the value stored. Cheaper substitute: deriving the clock from the wall time must fail the test below.
-- [ ] Migrate an existing `events` table in `SqliteEventStore` on open: add the column when it is missing and number existing rows 1..n in their current `ORDER BY id` order, in one transaction. Done when: a store file written by the previous build opens and replays its events in the same order as before. Cheaper substitute: dropping and recreating the table must fail review: it would lose sales.
+- [ ] Migrate an existing `events` table in `SqliteEventStore` on open: add the column when it is missing and number existing rows 1..n in their current replay order (`occurred_ms`, `device_id`, `seq`), in one transaction. Done when: a store file written by the previous build opens and replays its events in the same order as before. Cheaper substitute: dropping and recreating the table must fail review: it would lose sales.
 - [ ] In `Append`, set the clock to one more than the highest clock in the store; in `ImportAsync`, keep each event's own clock. Done when: after importing an event with clock 900, the next local event has clock 901.
 - [ ] Change `ReadAll` to `ORDER BY clock, device_id, seq`. Done when: two stores holding the same events return them in the same order.
 - [ ] Carry `Clock` through `SyncProtocol` records so it syncs unchanged. Done when: the sync test's two stores are equal including clocks.
-- [ ] Add `tests/Merchant.Tests/ClockOrderTests.cs`: define a product, append a second definition whose id sorts before the first (as a clock set back would produce), and assert the second wins in `ShopState`; assert a pre-migration store file still loads. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~ClockOrderTests"` passes and fails when `ReadAll` orders by id.
+- [ ] Add `tests/Merchant.Tests/ClockOrderTests.cs`: define a product, import a second definition stamped earlier than the first but with a higher clock (as a clock set back would produce), and assert the second wins in `ShopState`; assert a pre-migration store file still loads. Done when: `dotnet test Merchant.slnx --filter "FullyQualifiedName~ClockOrderTests"` passes and fails when `ReadAll` orders by `occurred_ms`.
 - [ ] Commit: `core: order events by a logical clock`
 
-**Test checkpoint:** `dotnet test Merchant.slnx --filter "FullyQualifiedName~ClockOrderTests"` passes; restoring `ORDER BY id` in `ReadAll` makes `Later_edit_wins_after_clock_set_back` fail.
+**Test checkpoint:** `dotnet test Merchant.slnx --filter "FullyQualifiedName~ClockOrderTests"` passes; restoring `ORDER BY occurred_ms` in `ReadAll` makes `Later_edit_wins_after_clock_set_back` fail.
 
 ## 2. Money and VAT arithmetic
 

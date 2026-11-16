@@ -10,7 +10,7 @@ title: "TODO-01 -- Fonts, render harness and screen comparison"
 
 > **Goal:** The till embeds its own typefaces, any view can be rendered to a PNG in a test without a display, and a test can say whether that render matches a design reference.
 
-> **Current state:** Measured 2026-11-17. The solution `Merchant.slnx` has `Merchant.Core`, `Merchant.SyncHost`, `Merchant.Till` and `tests/Merchant.Tests`; `dotnet test Merchant.slnx` passes 19 tests on Windows and on Linux (WSL, .NET SDK 10). The three variable fonts are in `assets/fonts` with their OFL texts but the till still uses `Avalonia.Fonts.Inter` (`src/Merchant.Till/Program.cs`, `.WithInterFont()`). `design/interface` holds 27 pages and their PNGs. No test renders a view, and nothing compares images. CI (`.github/workflows/ci.yml`) builds and tests on every push.
+> **Current state:** Measured 2026-11-17. The solution `Merchant.slnx` has `Merchant.Core`, `Merchant.SyncHost`, `Merchant.Till` and `tests/Merchant.Tests`; `dotnet test Merchant.slnx` passes 20 tests on Windows and on Linux (WSL, .NET SDK 10). The three variable fonts are in `assets/fonts` with their OFL texts but the till still uses `Avalonia.Fonts.Inter` (`src/Merchant.Till/Program.cs`, `.WithInterFont()`). `design/interface` holds 27 pages and their PNGs. No test renders a view, and nothing compares images. CI (`.github/workflows/ci.yml`) builds and tests on every push.
 
 ## Inputs
 

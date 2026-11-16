@@ -76,7 +76,7 @@ Run the tests with `dotnet test Merchant.slnx`.
 
 Merchant is in active development and is not ready to run a shop yet.
 
-- **Working today:** the encrypted event store, sync between tills with pairing, discovery, receipt printing, backup and restore, and a first plain window that sells for cash or card. 19 tests cover them on Windows and Linux.
+- **Working today:** the encrypted event store, sync between tills with pairing, discovery, receipt printing, backup and restore, and a first plain window that sells for cash or card. 20 tests cover them on Windows and Linux.
 - **Being built:** the full interface in three looks, with products and categories, stock, refunds, day end with a cash count, till names and settings. The work is planned section by section in [`todo/implementation-plan.md`](todo/implementation-plan.md).
 - **Not planned yet:** card reader integration, Bluetooth and USB printers, barcode scanning, discounts, and phone-sized screens.
 

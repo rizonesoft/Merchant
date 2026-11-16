@@ -31,6 +31,26 @@ public class StoreTests
     }
 
     [Fact]
+    public async Task Events_from_one_millisecond_replay_in_their_sequence()
+    {
+        using var dir = new TempDir();
+        using var store = SqliteEventStore.Open(dir.File("till.db"), Key);
+        var till = Guid.CreateVersion7();
+        var when = DateTimeOffset.FromUnixTimeMilliseconds(1_800_000_000_000);
+        // Two ids with the same timestamp, the later event holding the smaller id.
+        var larger = new Guid("01a31c5b-8000-7fff-bfff-ffffffffffff");
+        var smaller = new Guid("01a31c5b-8000-7000-8000-000000000000");
+
+        await store.ImportAsync(
+        [
+            new EventRecord(larger, till, 1, "first", "{}", when),
+            new EventRecord(smaller, till, 2, "second", "{}", when),
+        ]);
+
+        Assert.Equal(["first", "second"], store.ReadAll().Select(e => e.Type));
+    }
+
+    [Fact]
     public void The_database_file_is_encrypted()
     {
         using var dir = new TempDir();

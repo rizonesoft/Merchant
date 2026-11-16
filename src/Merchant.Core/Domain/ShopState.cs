@@ -20,7 +20,7 @@ public sealed class ShopState
 
     public int SaleCountOn(DateOnly day) => _sales.Count(s => s.Day == day);
 
-    /// <param name="events">Events in time order, as <c>SqliteEventStore.ReadAll</c> returns them.</param>
+    /// <param name="events">Events in replay order, as <c>SqliteEventStore.ReadAll</c> returns them.</param>
     public static ShopState From(IEnumerable<EventRecord> events)
     {
         var state = new ShopState();
